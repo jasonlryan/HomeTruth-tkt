@@ -162,3 +162,17 @@ against the canonical design-system tokens before implementation.
 - Notes: `AskAI.jsx` now has no remaining matches for the migrated hardcoded
   brand-colour patterns. Remaining HT-008 work is admin, settings, budget and
   quiz surfaces, followed by visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated settings surfaces — account, preferences, notifications and
+  data privacy — from legacy `primary`/`customActiveText` aliases, hardcoded
+  app backgrounds, blue icon chips, toggles and save/reset buttons to canonical
+  `ht.*` classes or neutral Tailwind colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted settings files now have no remaining matches for the migrated
+  hardcoded brand-colour patterns. Remaining HT-008 work is admin, budget and
+  quiz surfaces, followed by visual review.
