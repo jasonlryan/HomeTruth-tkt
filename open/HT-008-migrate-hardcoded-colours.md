@@ -34,15 +34,15 @@ Depends on HT-306.
 
 ## Acceptance Criteria
 
-- [ ] Brand colour JSX usages are migrated to `ht.*` Tailwind classes.
-- [ ] Legacy colour utility names are removed from JSX where practical:
+- [x] Brand colour JSX usages are migrated to `ht.*` Tailwind classes.
+- [x] Legacy colour utility names are removed from JSX where practical:
   `primary`, `myblue`, `customActive`, `customActiveText`, `customActiveBlue`,
   `customBlue`, `softBlue`, `blurpleLight`.
-- [ ] Any remaining hardcoded brand colour values are listed in the
+- [x] Any remaining hardcoded brand colour values are listed in the
   implementation log with a reason.
-- [ ] `tailwind.config.js` retains only compatibility aliases that still have
+- [x] `tailwind.config.js` retains only compatibility aliases that still have
   active usage, with deprecated aliases clearly marked.
-- [ ] `npm run build` passes, or the ticket records why verification could not
+- [x] `npm run build` passes, or the ticket records why verification could not
   be run.
 - [ ] A visual review is performed on the highest-risk changed screens:
   nav/header, auth pages, dashboard, document/chat surfaces and article pages.
@@ -252,3 +252,17 @@ against the canonical design-system tokens before implementation.
 - Notes: targeted quiz/onboarding files now have no remaining matches for the
   migrated hardcoded brand-colour patterns. Remaining HT-008 work is
   miscellaneous leftovers, legacy alias cleanup and visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated miscellaneous leftovers — extension, resources, landing
+  section tint, footer, arrow bullet, bookmark price, property detail links,
+  popup dev-token link and one remaining Ask HomeTruth save-session link — then
+  removed the unused legacy colour aliases from `tailwind.config.js`.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: the only remaining colour-regex matches are canonical token
+  declarations in `src/index.css`; `Login.jsx` contains `#access_token`, which
+  is an OAuth URL fragment and not a colour. Visual review remains open.
