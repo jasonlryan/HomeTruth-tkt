@@ -132,3 +132,17 @@ against the canonical design-system tokens before implementation.
   the migrated hardcoded brand-colour patterns. Semantic red/green status
   colours were left unchanged. Remaining HT-008 work is chat/assistant, admin,
   settings, budget and quiz surfaces, followed by visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated guest chat and smaller assistant components —
+  `GuestChat.jsx`, `Aiassistant.jsx` and `AskAIA.jsx` — from hardcoded cyan /
+  purple values, legacy `myblue` aliases, old focus rings and chat CTA colours
+  to canonical `ht.*` classes or CSS-token style values.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted guest-chat/assistant files now have no remaining matches for
+  the migrated hardcoded brand-colour patterns. The larger logged-in
+  `AskAI.jsx` chat surface remains as its own slice.
