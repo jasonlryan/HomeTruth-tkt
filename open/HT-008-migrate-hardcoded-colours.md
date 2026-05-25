@@ -238,3 +238,17 @@ against the canonical design-system tokens before implementation.
   as a separate cleanup because this slice is limited to colour migration.
   Remaining HT-008 work is quiz and miscellaneous leftovers, followed by visual
   review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated quiz/onboarding surfaces — attitudinal quiz modal, quiz
+  summary and complete-profile modal — from legacy active-state aliases,
+  hardcoded range gradients, checked control colours and primary buttons to
+  canonical `ht.*` classes or CSS-token values.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted quiz/onboarding files now have no remaining matches for the
+  migrated hardcoded brand-colour patterns. Remaining HT-008 work is
+  miscellaneous leftovers, legacy alias cleanup and visual review.
