@@ -70,3 +70,18 @@ against the canonical design-system tokens before implementation.
   place because this slice only migrated clear brand-colour intent. Remaining
   high-risk surfaces for HT-008 are auth pages, dashboard, document/chat
   surfaces, settings and quiz flows.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated auth and pre-launch surfaces — login, register, admin
+  login, forgot password, welcome and coming-soon pages — from legacy
+  `customActiveText`, `primary`, old focus-ring blues and hardcoded CTA colours
+  to canonical `ht.*` Tailwind classes.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: this preserves the current cyan CTA visual direction while moving the
+  implementation to tokens. The design-system still needs component-level
+  button guidance to decide when product CTAs should use cyan vs the canonical
+  orange `action-primary` token.
