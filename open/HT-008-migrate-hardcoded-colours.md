@@ -146,3 +146,19 @@ against the canonical design-system tokens before implementation.
 - Notes: targeted guest-chat/assistant files now have no remaining matches for
   the migrated hardcoded brand-colour patterns. The larger logged-in
   `AskAI.jsx` chat surface remains as its own slice.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated the logged-in `AskAI.jsx` chat surface — assistant bubbles,
+  markdown links, session list active states, save-session prompts, search-web
+  toggles, answer input actions, info banners and modal icons — from legacy
+  colour aliases, hardcoded cyan/purple/blue values and old indigo panels to
+  canonical `ht.*` classes, neutral Tailwind colours or semantic Tailwind
+  colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: `AskAI.jsx` now has no remaining matches for the migrated hardcoded
+  brand-colour patterns. Remaining HT-008 work is admin, settings, budget and
+  quiz surfaces, followed by visual review.
