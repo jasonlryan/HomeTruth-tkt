@@ -207,3 +207,18 @@ against the canonical design-system tokens before implementation.
   matches for the migrated hardcoded brand-colour patterns. Remaining HT-008
   work is knowledge-base admin, admin data/reporting, quiz and miscellaneous
   leftovers, followed by visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated admin data/reporting surfaces — admin data access and
+  reporting dashboard — from hardcoded purple/blue chart colours, admin table
+  links, sort indicators, period controls and chart strokes to canonical
+  `ht.*` classes or token-backed chart values.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted admin data/reporting files now have no remaining matches for
+  the migrated hardcoded brand-colour patterns. Remaining HT-008 work is
+  knowledge-base admin, quiz and miscellaneous leftovers, followed by visual
+  review.
