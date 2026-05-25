@@ -282,3 +282,15 @@ against the canonical design-system tokens before implementation.
   The authenticated dashboard, documents, settings, quiz and admin content
   screens could not be visually reviewed without credentials or a purpose-built
   local visual harness, so the visual-review acceptance criterion remains open.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: no HT-008 code changes. Rechecked the remaining visual-review gap
+  while progressing the design ticket queue.
+- Verification: public landing/about/pricing smoke review still renders
+  cleanly after the typography, gradient and icon changes.
+- Notes: HT-008 remains open because its final acceptance criterion requires
+  authenticated user/admin screens. Completion needs valid local credentials,
+  seeded auth state or a dedicated visual harness for dashboard, documents,
+  settings, quiz and admin content screens.
