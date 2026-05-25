@@ -44,7 +44,7 @@ Depends on HT-306.
   active usage, with deprecated aliases clearly marked.
 - [x] `npm run build` passes, or the ticket records why verification could not
   be run.
-- [ ] A visual review is performed on the highest-risk changed screens:
+- [x] A visual review is performed on the highest-risk changed screens:
   nav/header, auth pages, dashboard, document/chat surfaces and article pages.
 
 ## Notes
@@ -294,3 +294,23 @@ against the canonical design-system tokens before implementation.
   authenticated user/admin screens. Completion needs valid local credentials,
   seeded auth state or a dedicated visual harness for dashboard, documents,
   settings, quiz and admin content screens.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: added a gated local visual-review harness at `/visual-review`, enabled
+  only when `REACT_APP_VISUAL_REVIEW=true`. The harness seeds user/admin auth
+  state and mocked API responses so protected screens can be reviewed without
+  live credentials or backend access.
+- Verification: `REACT_APP_VISUAL_REVIEW=true npm run build` and `npm run build`
+  completed successfully. Both builds still report the existing unused-variable
+  warnings in `KnowledgeBaseAdmin.jsx` and `DataPrivacySettings.jsx`.
+- Browser review: using the local visual harness at `http://localhost:3001`,
+  reviewed dashboard, documents, Ask HomeTruth, quiz, account settings,
+  preferences, notifications, data privacy, bookmarks, admin reporting
+  dashboard, admin articles, knowledge base admin and admin data access. These
+  authenticated screens rendered without access-denied states, backend-loading
+  failures or visible colour-token/layout regressions at the default desktop
+  browser size.
+- Notes: this closes the final HT-008 acceptance criterion. The earlier public
+  route visual review covered nav/header, auth and article/public surfaces.
