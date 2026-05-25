@@ -85,3 +85,19 @@ against the canonical design-system tokens before implementation.
   implementation to tokens. The design-system still needs component-level
   button guidance to decide when product CTAs should use cyan vs the canonical
   orange `action-primary` token.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated marketing/static surfaces — about, pricing, pro features,
+  FAQ, privacy policy, terms of service, final CTA, call-to-action,
+  who-we-help, premium features, pricing plans and trust/security components —
+  from hardcoded brand hex values, legacy colour aliases and arbitrary brand
+  gradients to canonical `ht.*` Tailwind classes.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted marketing/static files now have no remaining matches for the
+  migrated hardcoded brand-colour patterns. Remaining HT-008 work is dashboard,
+  admin, document/chat, settings, budget and quiz surfaces, followed by visual
+  review of the highest-risk screens.
