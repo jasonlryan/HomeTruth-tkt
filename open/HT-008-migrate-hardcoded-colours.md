@@ -222,3 +222,19 @@ against the canonical design-system tokens before implementation.
   the migrated hardcoded brand-colour patterns. Remaining HT-008 work is
   knowledge-base admin, quiz and miscellaneous leftovers, followed by visual
   review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated `KnowledgeBaseAdmin.jsx` from hardcoded app backgrounds,
+  purple admin actions, focus rings, loading indicators, document links,
+  namespace badges and blue record counters to canonical `ht.*` classes or
+  neutral Tailwind colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: `KnowledgeBaseAdmin.jsx` now has no remaining matches for the migrated
+  hardcoded brand-colour patterns. The `_handlePreviewDocument` warning is left
+  as a separate cleanup because this slice is limited to colour migration.
+  Remaining HT-008 work is quiz and miscellaneous leftovers, followed by visual
+  review.
