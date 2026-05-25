@@ -192,3 +192,18 @@ against the canonical design-system tokens before implementation.
   hardcoded brand-colour patterns. Remaining HT-008 work is admin and quiz
   surfaces, plus lower-priority miscellaneous surfaces, followed by visual
   review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated the first admin slice — admin protected route and article
+  manager — from hardcoded app backgrounds, purple admin action colours, focus
+  rings, loading indicators and blue metadata/action affordances to canonical
+  `ht.*` classes or neutral Tailwind colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted admin article/protected-route files now have no remaining
+  matches for the migrated hardcoded brand-colour patterns. Remaining HT-008
+  work is knowledge-base admin, admin data/reporting, quiz and miscellaneous
+  leftovers, followed by visual review.
