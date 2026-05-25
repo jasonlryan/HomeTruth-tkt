@@ -266,3 +266,19 @@ against the canonical design-system tokens before implementation.
 - Notes: the only remaining colour-regex matches are canonical token
   declarations in `src/index.css`; `Login.jsx` contains `#access_token`, which
   is an OAuth URL fragment and not a colour. Visual review remains open.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: no frontend code changes. Performed a browser visual smoke review of
+  the token migration at `http://localhost:3001` for public/login surfaces:
+  landing, pricing, login, admin login, guest chat, about, FAQ and Home Truths.
+- Verification: public/login surfaces rendered without obvious colour-token
+  regressions or layout breakage at the default desktop browser size. Protected
+  user routes redirected to `/login`; protected admin routes redirected to
+  `/admin/login`.
+- Notes: `/home-truths` showed the expected empty-state UI but logged an Axios
+  network error because no backend API was available for this local visual pass.
+  The authenticated dashboard, documents, settings, quiz and admin content
+  screens could not be visually reviewed without credentials or a purpose-built
+  local visual harness, so the visual-review acceptance criterion remains open.
