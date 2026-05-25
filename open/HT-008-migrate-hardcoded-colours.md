@@ -101,3 +101,18 @@ against the canonical design-system tokens before implementation.
   migrated hardcoded brand-colour patterns. Remaining HT-008 work is dashboard,
   admin, document/chat, settings, budget and quiz surfaces, followed by visual
   review of the highest-risk screens.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated the logged-in app shell and dashboard surface — authenticated
+  layout, sidebar, topbar and dashboard — from legacy active-state aliases,
+  hardcoded app background, blue focus rings, action buttons, loading indicators
+  and markdown links to canonical `ht.*` classes or neutral Tailwind colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted app-shell/dashboard files now have no remaining matches for
+  the migrated hardcoded brand-colour patterns. Semantic red/green document
+  status colours were left unchanged. Remaining HT-008 work is admin,
+  document/chat, settings, budget and quiz surfaces, followed by visual review.
