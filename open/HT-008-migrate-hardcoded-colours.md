@@ -116,3 +116,19 @@ against the canonical design-system tokens before implementation.
   the migrated hardcoded brand-colour patterns. Semantic red/green document
   status colours were left unchanged. Remaining HT-008 work is admin,
   document/chat, settings, budget and quiz surfaces, followed by visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated document and saved-note surfaces — documents list,
+  document filters/sorting, upload/reminder states, document Ask HomeTruth modal,
+  document preview modal and saved notes — from legacy colour aliases, hardcoded
+  blues and arbitrary gradients to canonical `ht.*` classes or neutral Tailwind
+  colours.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted document/saved-note files now have no remaining matches for
+  the migrated hardcoded brand-colour patterns. Semantic red/green status
+  colours were left unchanged. Remaining HT-008 work is chat/assistant, admin,
+  settings, budget and quiz surfaces, followed by visual review.
