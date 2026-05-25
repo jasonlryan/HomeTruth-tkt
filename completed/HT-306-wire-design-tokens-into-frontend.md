@@ -35,12 +35,27 @@ belongs in a follow-up ticket after the token bridge exists.
 
 ## Acceptance Criteria
 
-- [ ] Frontend Tailwind exposes `font-brand` and `font-chat`.
-- [ ] Frontend Tailwind exposes an `ht.*` colour namespace aligned with `design-system/tokens/tokens.css`.
-- [ ] Existing legacy colour aliases either remain mapped to canonical tokens or are removed only when no usages remain.
-- [ ] Existing `font-gill` usages are migrated to `font-brand`.
-- [ ] Chat/system-font surfaces continue to have a system font utility.
-- [ ] Build or equivalent verification runs successfully, or the ticket records why it could not be run.
-- [ ] Implementation log records the files changed, verification, and follow-up migration risks.
+- [x] Frontend Tailwind exposes `font-brand` and `font-chat`.
+- [x] Frontend Tailwind exposes an `ht.*` colour namespace aligned with `design-system/tokens/tokens.css`.
+- [x] Existing legacy colour aliases either remain mapped to canonical tokens or are removed only when no usages remain.
+- [x] Existing `font-gill` usages are migrated to `font-brand`.
+- [x] Chat/system-font surfaces continue to have a system font utility.
+- [x] Build or equivalent verification runs successfully, or the ticket records why it could not be run.
+- [x] Implementation log records the files changed, verification, and follow-up migration risks.
 
 ## Implementation Log
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: added `font-brand`, `font-chat`, and `ht.*` design-token namespaces
+  to `tailwind.config.js`; mirrored the canonical design-system CSS variables in
+  `src/index.css`; mapped legacy colour aliases to canonical token values where
+  possible; migrated existing `font-gill` usages to `font-brand`; changed the
+  document chat wrapper from `font-inter` to `font-chat`.
+- Verification: `npm run build` completed successfully. Build reported existing
+  ESLint warnings for unused values in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`; those warnings were not introduced by this ticket.
+- Notes: this creates the token bridge only. Many JSX files still contain
+  hardcoded colour values and legacy utility names; those should be migrated in
+  a follow-up ticket after visual review.
