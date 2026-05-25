@@ -176,3 +176,19 @@ against the canonical design-system tokens before implementation.
 - Notes: targeted settings files now have no remaining matches for the migrated
   hardcoded brand-colour patterns. Remaining HT-008 work is admin, budget and
   quiz surfaces, followed by visual review.
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated budget surfaces — budget calculator list/empty states,
+  budget chat, budget chat viewer, no-budget entry point and budget QA editor —
+  from hardcoded blues, legacy `customActiveText`/`primary` aliases, old SVG
+  gradient stops, loading indicators and budget action buttons to canonical
+  `ht.*` classes or CSS-token SVG values.
+- Verification: `npm run build` completed successfully. The same existing
+  unused-variable warnings remain in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`.
+- Notes: targeted budget files now have no remaining matches for the migrated
+  hardcoded brand-colour patterns. Remaining HT-008 work is admin and quiz
+  surfaces, plus lower-priority miscellaneous surfaces, followed by visual
+  review.
