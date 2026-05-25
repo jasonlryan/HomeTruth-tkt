@@ -53,3 +53,20 @@ This is intentionally separate from HT-306. HT-306 created the token bridge;
 this ticket performs the migration. Older tickets that mention standardising to
 `#00c0f9`, `#19B0F0`, `#00bfff`, `#fd6916` or `#c084fc` should be reconciled
 against the canonical design-system tokens before implementation.
+
+## Implementation Log
+
+### 2026-05-25
+
+- Repo: frontend
+- Changed: migrated the first visible slice — navbar, Home Truths listing,
+  article detail and resources page brand-colour usages — from hardcoded cyan /
+  purple values and `myblue` aliases to canonical `ht.*` Tailwind classes.
+- Verification: `npm run build` completed successfully. The build still reports
+  existing unused-variable warnings in `KnowledgeBaseAdmin.jsx` and
+  `DataPrivacySettings.jsx`; those warnings pre-date this slice.
+- Notes: `Resources.jsx` still contains hardcoded neutral/tint layout colours
+  such as `#f8fafc`, `#f0f7ff`, `#1e2e5c` and `#111827`. These were left in
+  place because this slice only migrated clear brand-colour intent. Remaining
+  high-risk surfaces for HT-008 are auth pages, dashboard, document/chat
+  surfaces, settings and quiz flows.
