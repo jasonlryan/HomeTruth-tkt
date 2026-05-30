@@ -28,24 +28,24 @@ The first version should be rules-led and evidence-aware. It should not depend o
 
 - `HomeTruth_BE-staging/migrations/...create-property-tasks.js`
 - `HomeTruth_BE-staging/models/propertyTask.js`
-- `HomeTruth_BE-staging/services/preventionTaskService.js`
+- `HomeTruth_BE-staging/services/propertyTaskService.js`
 - `HomeTruth_BE-staging/routes/propertyTaskRoutes.js`
 - `HT_Frontend-staging/src/...` task/reminder UI
-- `HomeTruth-tickets/open/HT-316-prevention-tasks-reminders.md`
+- `HomeTruth-tickets/completed/HT-316-prevention-tasks-reminders.md`
 
 ## Acceptance Criteria
 
-- [ ] Backend stores prevention tasks with property, assignee, source, status, due date and completion state.
-- [ ] Initial rules generate tasks from property facts, evidence, document expiry dates or missing baseline data.
-- [ ] Tasks can be listed on a property profile.
-- [ ] User can mark a task complete, dismissed or not relevant.
-- [ ] Task status changes are tracked for pilot analytics.
-- [ ] UI displays tasks clearly and uses HomeTruth design-system tokens.
-- [ ] No insurer claim-reduction claims are shown in-product unless supported by approved copy.
-- [ ] No partner-facing individual task view or task-control capability is introduced in HT-316.
-- [ ] HT-316 remains pull-led with light in-app prompts only; no email, SMS, partner-app push or insurer-triggered nudges.
-- [ ] Verification covers task generation, task listing, status update and UI smoke test.
-- [ ] Implementation log records changed files and verification performed.
+- [x] Backend stores prevention tasks with property, assignee, source, status, due date and completion state.
+- [x] Initial rules generate tasks from property facts, evidence, document expiry dates or missing baseline data.
+- [x] Tasks can be listed on a property profile.
+- [x] User can mark a task complete, dismissed or not relevant.
+- [x] Task status changes are tracked for pilot analytics.
+- [x] UI displays tasks clearly and uses HomeTruth design-system tokens.
+- [x] No insurer claim-reduction claims are shown in-product unless supported by approved copy.
+- [x] No partner-facing individual task view or task-control capability is introduced in HT-316.
+- [x] HT-316 remains pull-led with light in-app prompts only; no email, SMS, partner-app push or insurer-triggered nudges.
+- [x] Verification covers task generation, task listing, status update and UI smoke test.
+- [x] Implementation log records changed files and verification performed.
 
 ## Review / Decision Gate
 
@@ -73,3 +73,34 @@ Review the prevention taxonomy before implementation. Key decision: which tasks 
 - Changed: documented homeowner-first prevention and partner access governance before implementation; updated HT-316 goal, AC and decision log.
 - Verification: documentation review only.
 - Notes: implementation must keep insurer/partner access out of individual task control and individual property data by default.
+
+### 2026-05-30
+- Repo: backend
+- Changed:
+  - `HomeTruth_BE-staging/migrations/20260530143000-create-property-tasks.js`
+  - `HomeTruth_BE-staging/models/propertyTask.js`
+  - `HomeTruth_BE-staging/models/propertyTaskStatusEvent.js`
+  - `HomeTruth_BE-staging/services/propertyTaskService.js`
+  - `HomeTruth_BE-staging/Controllers/propertyTaskController.js`
+  - `HomeTruth_BE-staging/routes/propertyTaskRoutes.js`
+  - `HomeTruth_BE-staging/routes/propertyRecordRoutes.js`
+  - `HomeTruth_BE-staging/models/index.js`
+- Verification:
+  - `node --check` passed for task service, controller, routes, models and migration.
+  - `git diff --check` passed.
+  - `npm run db:migrate` applied `20260530143000-create-property-tasks.js`.
+  - `npm run db:migrate:status` shows all current migrations up.
+  - Task modules load against the local MySQL-backed app configuration.
+- Notes: status changes are recorded in `property_task_status_events`; no partner-facing individual task endpoints were added.
+
+### 2026-05-30
+- Repo: frontend
+- Changed:
+  - `HT_Frontend-staging/src/api/api.js`
+  - `HT_Frontend-staging/src/pages/PropertyProfile.jsx`
+  - `HT_Frontend-staging/src/dev/VisualReviewHarness.jsx`
+- Verification:
+  - `npm run build` passed with pre-existing unused-var and Browserslist warnings.
+  - `git diff --check` passed.
+  - Browser smoke passed at `/visual-review/user?to=/property-profile`: task generation/listing rendered two open actions, and completing one action updated the open-action count from 2 to 1.
+- Notes: the UI is homeowner-facing, pull-led and uses HomeTruth token variables; no insurer claim-reduction or enforcement copy was introduced.
