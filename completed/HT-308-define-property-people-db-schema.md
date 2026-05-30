@@ -3,7 +3,7 @@
 **Priority:** P1
 **Repo:** backend
 **Created:** 2026-05-25
-**Updated:** 2026-05-25
+**Updated:** 2026-05-30
 
 ## Goal
 
@@ -25,7 +25,7 @@ The schema must be graph-ready but not graph-first: relational MySQL remains the
 
 - `HomeTruth_BE-staging/docs/property-people-spine-schema.md` - backend schema contract
 - `HomeTruth_BE-staging/docs/property-people-spine-erd.html` - visual HTML ERD reference
-- `HomeTruth-tickets/open/HT-308-define-property-people-db-schema.md` - tracking and implementation log
+- `HomeTruth-tickets/completed/HT-308-define-property-people-db-schema.md` - tracking and implementation log
 
 ## Acceptance Criteria
 
@@ -83,3 +83,9 @@ Prefer `property_people` as the table name for the relationship spine. The curre
 - Changed: marked HT-308 schema spec as reviewed and accepted for HT-309 implementation.
 - Verification: user approved proceeding after the naming convention and domain evolution rules were captured.
 - Notes: acceptance applies to the first stable schema spine, not a final exhaustive domain model.
+
+### 2026-05-30
+- Repo: tickets
+- Changed: closed stale completed ticket as housekeeping after HT-309 and follow-on tickets implemented the schema spine and pilot path.
+- Verification: acceptance criteria were already checked; HT-309, HT-310, HT-312, HT-313, HT-314, HT-316 and HT-317 have used the schema conventions.
+- Notes: this remains the database contract for the first property + people spine.

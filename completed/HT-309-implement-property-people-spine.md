@@ -3,7 +3,7 @@
 **Priority:** P1
 **Repo:** backend
 **Created:** 2026-05-25
-**Updated:** 2026-05-25
+**Updated:** 2026-05-30
 
 ## Goal
 
@@ -38,7 +38,7 @@ The first slice must create the core tables and model associations only. API rou
 - `HomeTruth_BE-staging/models/evidenceSource.js` - `EvidenceSource` model
 - `HomeTruth_BE-staging/models/propertyFact.js` - `PropertyFact` model
 - `HomeTruth_BE-staging/models/index.js` - model imports, associations, exports
-- `HomeTruth-tickets/open/HT-309-implement-property-people-spine.md` - tracking and implementation log
+- `HomeTruth-tickets/completed/HT-309-implement-property-people-spine.md` - tracking and implementation log
 
 ## Acceptance Criteria
 
@@ -95,3 +95,9 @@ Do not introduce a graph database under this ticket. The schema is graph-ready, 
 - Verification after migration: `npm run db:migrate:status` showed both `20260525143000-baseline-existing-schema.js` and `20260525230000-create-property-people-spine.js` as `up`.
 - Verification DB check: direct MySQL table check confirmed `properties`, `property_addresses`, `property_people`, `property_documents`, `evidence_sources`, and `property_facts` exist.
 - Notes: local database target was the existing `hometruth` MySQL DB used by the backend migration workflow.
+
+### 2026-05-30
+- Repo: tickets
+- Changed: closed stale completed ticket as housekeeping after downstream property profile, document linking, facts, partner consent, prevention tasks and pilot analytics were implemented on top of this spine.
+- Verification: acceptance criteria were already checked and current migration status includes the property + people spine as `up`.
+- Notes: no backend change made under this housekeeping step.

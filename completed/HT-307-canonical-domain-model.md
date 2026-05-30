@@ -3,7 +3,7 @@
 **Priority:** P1
 **Repo:** both
 **Created:** 2026-05-25
-**Updated:** 2026-05-25
+**Updated:** 2026-05-30
 
 ## Goal
 
@@ -20,7 +20,7 @@ This ticket creates a source-controlled domain model artifact from the local Hom
 ## Files
 
 - `hometruth DOCS/docs/product/hometruth-domain-model.md` - canonical domain model draft
-- `HomeTruth-tickets/open/HT-307-canonical-domain-model.md` - tracking and implementation log
+- `HomeTruth-tickets/completed/HT-307-canonical-domain-model.md` - tracking and implementation log
 
 ## Acceptance Criteria
 
@@ -79,3 +79,9 @@ Do not implement new database tables from the NotebookLM extract directly. First
 - Changed: marked the canonical domain model as reviewed and accepted for the first implementation spine.
 - Verification: user approved proceeding from the property + people model into HT-308 and HT-309 implementation work.
 - Notes: acceptance applies to the working spine, not to a final exhaustive HomeTruth schema.
+
+### 2026-05-30
+- Repo: tickets
+- Changed: closed stale completed ticket as housekeeping after HT-310 through HT-317 implemented the first pilot path against this model.
+- Verification: acceptance criteria were already checked and downstream implementation tickets have completed.
+- Notes: future model expansion remains additive and ticketed; this ticket represents the accepted first canonical model, not a final exhaustive schema.
