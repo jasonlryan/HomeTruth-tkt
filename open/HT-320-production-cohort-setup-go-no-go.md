@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs / tickets
 **Milestone:** 500-user insurer pilot readiness
 **Created:** 2026-05-30
-**Updated:** 2026-05-30
+**Updated:** 2026-05-31
 
 ## Goal
 
@@ -21,6 +21,7 @@ HT-314 through HT-317 make the partner cohort path technically measurable. This 
 - HT-317: pilot analytics, reporting and readiness review
 - HT-318: pilot support and incident runbook
 - HT-319: data deletion and consent withdrawal runbook
+- HT-324: pilot reporting coverage and privacy validation
 
 ## Expected Files
 
@@ -34,10 +35,10 @@ HT-314 through HT-317 make the partner cohort path technically measurable. This 
 - [ ] Invite mode is confirmed: cohort code, individual invite codes or both.
 - [ ] Consent copy version is recorded.
 - [ ] Required and optional consent scopes are reviewed.
-- [ ] End-to-end smoke test covers invite view, auth, consent, property setup, task generation and admin cohort report.
+- [ ] End-to-end smoke test covers invite view, auth, consent, property setup, document upload/link, task generation, property-aware chat and admin cohort report.
 - [ ] `npm run db:migrate:status` is recorded for the target backend environment.
 - [ ] Admin pilot report is reviewed for aggregate-only output.
-- [ ] Open risks and blockers are listed.
+- [x] Open risks and blockers are listed.
 - [ ] Final `go`, `go_with_monitoring` or `no_go` decision is recorded with owner/date.
 
 ## Review / Decision Gate
@@ -51,3 +52,26 @@ This is the final launch gate. It should remain `no_go` until HT-318 and HT-319 
 - Changed: created HT-320 from HT-317 final readiness gate.
 - Verification: ticket derived from completed technical pilot path and open operational blockers.
 - Notes: this is not a new product feature ticket; it is the launch control point.
+
+### 2026-05-31
+- Repo: docs, tickets
+- Changed:
+  - `hometruth DOCS/docs/product/pilot-go-no-go-review.md`
+  - `HomeTruth-tickets/open/HT-320-production-cohort-setup-go-no-go.md`
+- Verification: drafted go/no-go review with current `no_go` recommendation, smoke-test checklist, technical readiness checklist, operational readiness checklist and open risks.
+- Notes: still blocked on target environment, partner/cohort production configuration, consent copy version, full smoke test, support ownership and privacy/deletion runbook acceptance.
+
+### 2026-05-31
+- Repo: frontend, docs, tickets
+- Changed:
+  - `hometruth DOCS/docs/product/pilot-go-no-go-review.md`
+  - `HomeTruth-tickets/open/HT-320-production-cohort-setup-go-no-go.md`
+  - HT-323 frontend property-aware chat handoff implemented in `HT_Frontend-staging`
+- Verification: `npm run build` passes in `HT_Frontend-staging`.
+- Notes: launch decision remains `no_go`; frontend handoff now needs target-environment smoke testing alongside the existing support, privacy/legal, target environment and consent-copy blockers.
+
+### 2026-05-31
+- Repo: tickets
+- Changed: added HT-324 as the follow-up for admin report metric coverage and partner-facing aggregate privacy review.
+- Verification: HT-322 has metric thresholds and event mapping, but target report-field coverage and privacy approval are not yet complete.
+- Notes: launch decision remains `no_go` until HT-324 is accepted or equivalent reporting/privacy sign-off is recorded.
