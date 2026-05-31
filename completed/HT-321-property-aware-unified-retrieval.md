@@ -41,26 +41,26 @@ This ticket creates that layer before live cohort scale, so the assistant can be
 - `HomeTruth_BE-staging/Controllers/userDocumentChatController.js` if shared retrieval applies there
 - `HomeTruth_BE-staging/tests/...` or local verification script for retrieval boundaries
 - `hometruth DOCS/docs/product/property-aware-retrieval-architecture.md`
-- `HomeTruth-tickets/open/HT-321-property-aware-unified-retrieval.md`
+- `HomeTruth-tickets/completed/HT-321-property-aware-unified-retrieval.md`
 
 ## Acceptance Criteria
 
-- [ ] A single backend retrieval service exists for assistant context assembly.
-- [ ] Retrieval can search the general knowledge base from Qdrant `home_truth_documents`.
-- [ ] Retrieval can search private user documents from Qdrant `user_documents` with a required `user_id` filter.
-- [ ] Retrieval supports optional `property_id` scoping for private user documents.
-- [ ] User document vectors include enough metadata to support property-aware filtering, either directly in vector payload or through a safe DB join before retrieval.
-- [ ] If no `property_id` is supplied, behaviour is explicit: either search all current user's documents or require property selection, with the decision recorded.
-- [ ] General KB results and private user document results are labelled separately before being passed to the LLM.
-- [ ] Assistant prompts distinguish source classes: uploaded user document, property record/evidence, HomeTruth guidance, and external/web source where applicable.
-- [ ] Main authenticated assistant uses the unified retrieval service instead of searching only the general KB.
-- [ ] Specific document chat continues to enforce `user_id` and document ownership.
-- [ ] Cross-user retrieval is impossible by implementation, not just UI convention.
-- [ ] Tests or verification scripts prove User A cannot retrieve User B's vectors.
-- [ ] Tests or verification scripts prove property-scoped retrieval does not return another property's documents for the same user.
-- [ ] Deletion/withdrawal implications are documented for both MySQL and Qdrant chunks, aligned with HT-319.
-- [ ] The implementation remains viable for a 500-user pilot and records the expected vector volume/scaling assumptions.
-- [ ] Implementation log records changed files and verification performed.
+- [x] A single backend retrieval service exists for assistant context assembly.
+- [x] Retrieval can search the general knowledge base from Qdrant `home_truth_documents`.
+- [x] Retrieval can search private user documents from Qdrant `user_documents` with a required `user_id` filter.
+- [x] Retrieval supports optional `property_id` scoping for private user documents.
+- [x] User document vectors include enough metadata to support property-aware filtering, either directly in vector payload or through a safe DB join before retrieval.
+- [x] If no `property_id` is supplied, behaviour is explicit: either search all current user's documents or require property selection, with the decision recorded.
+- [x] General KB results and private user document results are labelled separately before being passed to the LLM.
+- [x] Assistant prompts distinguish source classes: uploaded user document, property record/evidence, HomeTruth guidance, and external/web source where applicable.
+- [x] Main authenticated assistant uses the unified retrieval service instead of searching only the general KB.
+- [x] Specific document chat continues to enforce `user_id` and document ownership.
+- [x] Cross-user retrieval is impossible by implementation, not just UI convention.
+- [x] Tests or verification scripts prove User A cannot retrieve User B's vectors.
+- [x] Tests or verification scripts prove property-scoped retrieval does not return another property's documents for the same user.
+- [x] Deletion/withdrawal implications are documented for both MySQL and Qdrant chunks, aligned with HT-319.
+- [x] The implementation remains viable for a 500-user pilot and records the expected vector volume/scaling assumptions.
+- [x] Implementation log records changed files and verification performed.
 
 ## Scale Requirements
 
@@ -119,6 +119,15 @@ Review before implementation:
 - What source labels should be exposed in the UI versus only used inside prompts?
 - What minimum deletion/withdrawal behaviour is required before the 500-user pilot?
 
+## Decision Log / Return To
+
+- 2026-05-31: If no `propertyId` / `property_id` is supplied, the authenticated assistant searches all active uploaded documents owned by the current user plus the general HomeTruth knowledge base.
+- 2026-05-31: Property scoping is authorised through MySQL first: active `property_people` relationship, active `property_documents` links, and current-user-owned `userDocuments`. Qdrant then receives both `user_id` and allowed `document_id` filters.
+- 2026-05-31: New property-linked uploads also write `property_id` and `property_ids` payload metadata to Qdrant, but V1 authorisation does not rely on that metadata.
+- 2026-05-31: A later document-to-property link does not require immediate vector reindex in V1 because retrieval uses the MySQL link set. Return to idempotent Qdrant payload backfill if a future version filters directly on `property_id`.
+- 2026-05-31: Source classes are included in prompt context and response metadata. UI surfacing of source labels can be refined in a future frontend ticket.
+- 2026-05-31: Minimum deletion behaviour before pilot remains: document delete removes Qdrant chunks by `document_id` plus `user_id`; user deletion/withdrawal must delete all Qdrant chunks by `user_id`; property-link removal must remove MySQL link access immediately.
+
 ## Implementation Notes
 
 - Do not merge `documents` and `userDocuments` under this ticket.
@@ -135,3 +144,23 @@ Review before implementation:
 - Changed: created HT-321 for property-aware unified retrieval planning.
 - Verification: derived from current backend implementation, loaded Qdrant state, property + people ticket history and 500-user pilot scale requirement.
 - Notes: this is the next backend architecture ticket needed before the assistant can safely combine general KB and private user/property documents at cohort scale.
+
+### 2026-05-31
+- Repo: backend, docs, tickets
+- Changed:
+  - `HomeTruth_BE-staging/services/unifiedRetrievalService.js`
+  - `HomeTruth_BE-staging/services/userDocumentVectorService.js`
+  - `HomeTruth_BE-staging/services/vectorStore.js`
+  - `HomeTruth_BE-staging/Controllers/AI/ai_chat.js`
+  - `HomeTruth_BE-staging/Controllers/userDocumentController.js`
+  - `HomeTruth_BE-staging/scripts/verifyUnifiedRetrievalBoundaries.js`
+  - `hometruth DOCS/docs/product/property-aware-retrieval-architecture.md`
+  - `HomeTruth-tickets/completed/HT-321-property-aware-unified-retrieval.md`
+- Verification:
+  - `node --check` passed for changed backend service/controller/script files.
+  - `node scripts/verifyUnifiedRetrievalBoundaries.js` passed.
+  - `git diff --check` passed in the backend, docs and tickets repos.
+- Notes:
+  - Main authenticated chat now uses unified retrieval; anonymous chat remains limited to shared HomeTruth guidance.
+  - Property-selected private retrieval does not fall back to all user documents when the property has no linked current-user documents.
+  - Existing specific document chat ownership checks remain in place.
