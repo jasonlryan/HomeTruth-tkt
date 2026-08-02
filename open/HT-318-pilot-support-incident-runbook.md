@@ -4,7 +4,7 @@
 **Repo:** docs / tickets
 **Milestone:** 500-user insurer pilot readiness
 **Created:** 2026-05-30
-**Updated:** 2026-05-31
+**Updated:** 2026-08-02
 
 ## Goal
 
@@ -27,7 +27,7 @@ HT-317 proved the technical pilot reporting path but left operational launch blo
 
 - [ ] Named pilot support owner is recorded.
 - [ ] Named technical escalation contact is recorded.
-- [ ] Support hours and expected first-response time are recorded.
+- [ ] Provisional support route, support hours and expected first-response time are validated against a real mailbox.
 - [x] Issue categories are defined: invite failure, login/signup, consent question, property setup, document/task issue, data deletion/withdrawal, incident.
 - [x] Severity levels and escalation rules are defined.
 - [x] User-facing holding responses are drafted for common pilot issues.
@@ -54,3 +54,9 @@ This cannot be completed without human ownership decisions. Required inputs: sup
   - `HomeTruth-tickets/open/HT-318-pilot-support-incident-runbook.md`
 - Verification: drafted issue categories, severity levels, escalation rules, holding responses, incident path and admin monitoring references.
 - Notes: still blocked on named support owner, technical escalation contact, incident owner, support route, support hours and first-response target.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: adopted `support@hometruth.io` as the provisional user-facing pilot support route and added mailbox-validation criteria.
+- Verification: documentation only; no mailbox delivery, reply, forwarding or escalation test has been performed.
+- Notes: proposed temporary service target is one business-day first response, Monday to Friday, 09:00-17:00 UK time. HT-318 remains blocked on mailbox validation, a temporary escalation contact and named permanent owners.

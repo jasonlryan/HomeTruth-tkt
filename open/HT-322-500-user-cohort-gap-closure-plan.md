@@ -373,3 +373,9 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Changed: HT-326 PRs #4 and #2 merged and their main branches were pulled locally.
 - Verification: backend `0b5a164`; frontend `2c0ccab`.
 - Notes: technical reporting gaps are now closed locally. The critical path is named support/privacy ownership, target-environment configuration and rehearsal, reporting approval, then the formal HT-320 decision.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: `support@hometruth.io` is the provisional user-facing pilot support route, subject to HT-318 mailbox validation.
+- Verification: no mailbox test yet; the route is not approved for publication.
+- Notes: this advances communication readiness without claiming that support ownership or escalation is solved.
