@@ -230,3 +230,20 @@ Confirm whether property-aware chat should live inside the property profile as a
   - Follow-up local count check confirmed zero HT-323 smoke users, properties and documents remain.
 - Current status:
   - HT-323 is not complete until a funded/working OpenAI key allows Phase 4 to verify real MySQL/Qdrant/OpenAI retrieval response boundaries.
+
+### 2026-08-02
+- Repo: backend, tickets
+- Verification attempted:
+  - Re-ran the full Phase 4 smoke after the user provided a key.
+  - Local backend was started on `http://localhost:4010`.
+  - Local MySQL remained reachable through Docker.
+  - Local Qdrant was started on `localhost:6333` and collections were initialized.
+  - Synthetic selected-property and unrelated-property rows were seeded.
+  - The current `.env` contained exactly one `OPENAI_API_KEY` entry.
+- Blocker:
+  - OpenAI still returned `credit_balance_exhausted` during `UserDocumentVectorService.storeDocumentChunks`, before vectors could be created or the API response boundary could be verified.
+- Cleanup:
+  - Synthetic HT-323 smoke rows were removed.
+  - Follow-up local count check again confirmed zero HT-323 smoke users, properties and documents remain.
+- Current status:
+  - HT-323 remains open. The next move is to use an OpenAI key whose owning project/organization has available credits, then rerun the same Phase 4 smoke.
