@@ -40,7 +40,7 @@ Add an operator-run command that indexes markdown/text files from the HomeTruth 
 - [x] Loader is re-runnable without duplicating prior imports for the same source path.
 - [x] Loader requires a real OpenAI API key before embedding work starts.
 - [x] Script passes syntax validation.
-- [ ] Any full import smoke is recorded, or explicitly deferred with the external dependency called out.
+- [x] Any full import smoke is recorded, or explicitly deferred with the external dependency called out.
 
 ## Implementation Log
 
@@ -54,5 +54,6 @@ Add an operator-run command that indexes markdown/text files from the HomeTruth 
 - Verification:
   - Inspected existing `TextSplitter`, `VectorStore`, `OpenAIEmbeddingService` and `documents` model compatibility.
   - `node --check scripts/loadKnowledgeBaseFromDocs.js` passes.
+  - Invalid `KB_EMBED_BATCH_SIZE=0` fails fast before DB/Qdrant import work starts.
 - Notes:
   - Full import smoke intentionally remains pending until the operator confirms the target docs corpus and whether to write local MySQL/Qdrant knowledge-base state.
