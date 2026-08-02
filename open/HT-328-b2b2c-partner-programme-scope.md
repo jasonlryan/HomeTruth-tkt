@@ -47,6 +47,15 @@ Define the common partner-programme model, choose the initial commercial wedge, 
 - HT-317, HT-324 and HT-326: pilot reporting and repeat-use foundations
 - HT-320: current live-cohort go/no-go remains independent and must not be bypassed
 
+## Agent Delivery Protocol
+
+Follow the HomeTruth Agent Delivery Playbook in the documentation repository:
+
+- HT-328 is documentation/ticket work and is committed directly to main.
+- HT-329 onward contain code work. Any code change uses the installed pr-review-fix-loop skill: ticketed feature branch, one draft PR, review from a clean target-branch worktree, fixes only on the feature branch, repeat until clear to merge, then one ready-for-review transition and CI check.
+- Main is the current expected HomeTruth target branch, but agents must inspect repository authority and use dev if that repository's conventions require it.
+- Do not create PRs solely for documentation or ticket updates.
+
 ## Implementation Log
 
 ### 2026-08-02
