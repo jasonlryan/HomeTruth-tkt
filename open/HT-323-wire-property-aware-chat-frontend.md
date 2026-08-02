@@ -214,3 +214,19 @@ Confirm whether property-aware chat should live inside the property profile as a
   - Removed the synthetic HT-323 smoke user, two smoke properties and two smoke documents from local MySQL.
 - Next move:
   - Add OpenAI credits or provide a working target OpenAI key, then rerun Phase 4 with synthetic selected/unrelated property data and verify the API response `ragContext.scope` plus retrieval context boundary.
+
+### 2026-08-02
+- Repo: backend, tickets
+- Verification attempted:
+  - Re-ran the Phase 4 target-environment retrieval smoke after the OpenAI key was updated.
+  - Local MySQL remained reachable through Docker.
+  - Local Qdrant remained reachable on `localhost:6333` and both retrieval collections were present.
+  - Synthetic selected-property and unrelated-property smoke rows were seeded.
+  - The real backend embedding path was exercised through `UserDocumentVectorService.storeDocumentChunks`.
+- Blocker:
+  - OpenAI still returned `credit_balance_exhausted` on real embedding creation, so no real vectors/context/API response could be produced.
+- Cleanup:
+  - Synthetic HT-323 smoke rows were removed.
+  - Follow-up local count check confirmed zero HT-323 smoke users, properties and documents remain.
+- Current status:
+  - HT-323 is not complete until a funded/working OpenAI key allows Phase 4 to verify real MySQL/Qdrant/OpenAI retrieval response boundaries.
