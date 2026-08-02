@@ -63,3 +63,4 @@ This ticket is complete only when the reporting pack is both analytically useful
   - representative five-member MySQL smoke passed and deleted all fixture users, partners, cohorts, members and events
   - response contract verified no user/member/property IDs, document names, raw facts, feedback text or chat content
 - Notes: product/pilot owner interpretation and privacy/compliance approval remain required before external partner sharing.
+  Backend implementation is ready for review in https://github.com/jasonlryan/HomeTruth-be/pull/3 at `a1c78ba`.
