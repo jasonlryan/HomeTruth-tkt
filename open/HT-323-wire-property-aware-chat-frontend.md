@@ -120,6 +120,7 @@ Acceptance criteria:
 - [ ] Property-scoped chat response excludes unrelated property/user context.
 - [ ] No-property chat mode still follows the documented all-current-user-document fallback.
 - [x] Local backend boundary script verifies user/document Qdrant scoping and empty property document scope does not fall back to all user vectors.
+- [ ] OpenAI project has enough quota to generate real smoke embeddings and chat response.
 
 ### Phase 5: Visual Review
 
@@ -191,3 +192,25 @@ Confirm whether property-aware chat should live inside the property profile as a
   - fixed a URL cleanup bug so Ask AI preserves `?propertyId=...` until the user explicitly clears context
   - moved the active-chat context notice into the composer so it remains visible after auto-scroll
   - ticket remains open for target-environment retrieval response smoke against real MySQL/Qdrant/OpenAI data
+
+### 2026-08-02
+- Repo: backend, tickets
+- Changed:
+  - `HomeTruth-tickets/open/HT-323-wire-property-aware-chat-frontend.md`
+- Verification attempted:
+  - Docker was started by the user and `docker start hometruth-mysql` succeeded.
+  - Local Qdrant `1.17.0` was started on `localhost:6333`.
+  - `npm run db:migrate:status` shows all local backend migrations up:
+    - `20260525143000-baseline-existing-schema.js`
+    - `20260525230000-create-property-people-spine.js`
+    - `20260530120000-create-partner-cohort-consent.js`
+    - `20260530143000-create-property-tasks.js`
+    - `20260530170000-create-pilot-events.js`
+  - Qdrant collections `home_truth_documents` and `user_documents` were initialized locally.
+  - Synthetic HT-323 smoke user/property/document rows were created, then cleaned up after the smoke was blocked.
+- Blocker:
+  - Real OpenAI embedding creation failed with `credit_balance_exhausted`, so no real vectors could be created and the real MySQL/Qdrant/OpenAI retrieval response smoke could not complete.
+- Cleanup:
+  - Removed the synthetic HT-323 smoke user, two smoke properties and two smoke documents from local MySQL.
+- Next move:
+  - Add OpenAI credits or provide a working target OpenAI key, then rerun Phase 4 with synthetic selected/unrelated property data and verify the API response `ragContext.scope` plus retrieval context boundary.
