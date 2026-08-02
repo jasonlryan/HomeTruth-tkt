@@ -32,6 +32,106 @@ For the 500-user cohort journey, the property profile needs a clear handoff into
 
 Give users a property-scoped assistant entry point that sends `propertyId` to the backend and makes it clear when chat is using selected-property context versus all-user-document context.
 
+## Objective
+
+Make the existing Ask AI experience property-aware when launched from a Property Profile, so the selected `propertyId` reaches authenticated chat requests and users can clearly see, use and clear that property context.
+
+## Scope
+
+### In Scope
+
+- Preserve the existing Ask AI route as the chat surface for the pilot.
+- Add a property-profile entry point that routes users into Ask AI with the selected property id.
+- Pass selected property context through route state and query params so refresh/navigation still has a property id.
+- Extend `askAIChat` to send optional `propertyId` to `/api/ai_chat/chat`.
+- Show a visible selected-property context indicator in Ask AI.
+- Let users clear property context and return to general Ask AI behaviour.
+- Clear property context when starting a new session or selecting an existing session.
+- Verify the frontend compiles after the change.
+- Record remaining target-environment smoke and visual checks.
+
+### Out Of Scope
+
+- Backend retrieval changes. These belong to HT-321 unless smoke testing finds a regression.
+- New embedded chat panel inside Property Profile.
+- New chat conversation model or persistence changes for property context.
+- New analytics/reporting work for property-aware chat usage. This belongs to HT-324 if needed for pilot metrics.
+- Legal/privacy, support, target-environment and go/no-go decisions. These remain HT-318, HT-319 and HT-320 work.
+- Full production launch approval.
+
+### Closure Requirements
+
+HT-323 can close when the remaining smoke checks prove that:
+
+- clicking “Ask about this property” from a real property profile opens Ask AI with the property context shown
+- submitting an authenticated chat request sends the selected `propertyId`
+- the backend response uses property-scoped retrieval without crossing into another property/user context
+- clearing context or starting a new session removes `propertyId` from subsequent chat requests
+- desktop and mobile UI states are visually acceptable
+
+## Phased Plan
+
+### Phase 1: Frontend Wiring
+
+**Goal:** Carry selected property context from Property Profile into Ask AI without changing the core chat route.
+
+Acceptance criteria:
+
+- [x] Property Profile has an “Ask about this property” action.
+- [x] The action routes to `/ask-ai` with the selected property id.
+- [x] Ask AI can read property context from route state and query params.
+- [x] `askAIChat` accepts an optional `propertyId`.
+- [x] Authenticated chat requests include `propertyId` when one is active.
+
+### Phase 2: Context UX
+
+**Goal:** Make property-scoped chat understandable, visible and reversible for users.
+
+Acceptance criteria:
+
+- [x] Ask AI displays a selected-property context indicator.
+- [x] The context indicator includes the selected property label where available.
+- [x] Users can clear selected-property context.
+- [x] Starting a new session clears selected-property context.
+- [x] Selecting an existing session clears selected-property context.
+- [x] No selected property falls back to the documented general Ask AI behaviour.
+
+### Phase 3: API Smoke
+
+**Goal:** Prove the browser sends the selected property id in the real authenticated chat request.
+
+Acceptance criteria:
+
+- [ ] Launch Ask AI by clicking “Ask about this property” from a real property profile.
+- [ ] Submit a property question from Ask AI.
+- [ ] Verify the `/api/ai_chat/chat` request payload includes the selected `propertyId`.
+- [ ] Clear context or start a new session.
+- [ ] Verify subsequent `/api/ai_chat/chat` requests do not include `propertyId`.
+
+### Phase 4: Retrieval Boundary Smoke
+
+**Goal:** Prove the backend response is actually scoped by selected property context.
+
+Acceptance criteria:
+
+- [ ] Smoke data includes at least one property-linked document/fact/task.
+- [ ] Smoke data includes another property or unrelated user document that should not be retrieved.
+- [ ] Property-scoped chat response uses selected-property context.
+- [ ] Property-scoped chat response excludes unrelated property/user context.
+- [ ] No-property chat mode still follows the documented all-current-user-document fallback.
+
+### Phase 5: Visual Review
+
+**Goal:** Confirm the selected-property chat state is visually acceptable for the pilot.
+
+Acceptance criteria:
+
+- [ ] Empty Ask AI state with property context is reviewed on desktop.
+- [ ] Active conversation state with property context is reviewed on desktop.
+- [ ] Empty Ask AI state with property context is reviewed on mobile.
+- [ ] Active conversation state with property context is reviewed on mobile.
+- [ ] The context indicator text and clear action fit without overlap or truncation.
+
 ## Acceptance Criteria
 
 - [x] `askAIChat` accepts an optional `propertyId`.
