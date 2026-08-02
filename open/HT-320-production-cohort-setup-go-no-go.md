@@ -70,6 +70,12 @@ This is the final launch gate. It should remain `no_go` until HT-318 and HT-319 
 - Verification: `npm run build` passes in `HT_Frontend-staging`.
 - Notes: launch decision remains `no_go`; frontend handoff now needs target-environment smoke testing alongside the existing support, privacy/legal, target environment and consent-copy blockers.
 
+### 2026-08-02
+- Repo: backend, docs, tickets
+- Changed: HT-324 technical reporting coverage now records aggregate activation, setup, document, task, chat and feedback metrics; repeat use is explicitly deferred to HT-326.
+- Verification: disposable five-member local MySQL cohort smoke passed; aggregate response contract excluded individual identifiers and sensitive content.
+- Notes: decision remains `no_go`. This does not replace product/pilot interpretation or privacy/compliance approval, and it is not target-environment evidence.
+
 ### 2026-05-31
 - Repo: tickets
 - Changed: added HT-324 as the follow-up for admin report metric coverage and partner-facing aggregate privacy review.

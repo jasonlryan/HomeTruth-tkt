@@ -261,7 +261,7 @@ Acceptance criteria:
 - [x] Pilot event names are mapped to each metric.
 - [x] Admin aggregate report can answer each metric or a follow-up reporting ticket is created.
 - [x] Partner-facing aggregate reporting pack outline is drafted.
-- [ ] Reporting pack is reviewed for privacy leakage.
+- [ ] Reporting pack is reviewed for privacy leakage by the privacy/compliance owner; HT-324 technical boundary checks are complete.
 - [ ] Decision owner for success/no-success interpretation is named.
 
 ### 8. Final Go/No-Go
@@ -305,7 +305,7 @@ Acceptance criteria:
 - [ ] Target environment, migration state and Qdrant collection readiness are recorded.
 - [ ] End-to-end pilot smoke test covers invite view, auth, consent, property setup, document upload/link, task generation, property-aware chat and aggregate admin report.
 - [x] Pilot success thresholds are recorded before launch.
-- [ ] Partner-facing aggregate report outline is drafted and reviewed for privacy leakage.
+- [ ] Partner-facing aggregate report outline is drafted and awaits privacy/compliance review; HT-324 technical boundary checks are complete.
 - [x] HT-320 go/no-go review is updated with the final decision or remaining blockers.
 - [x] Implementation log records changed files, decisions and verification performed.
 
@@ -355,3 +355,9 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Notes:
   - loop status remains `no_go`
   - remaining blockers are human owner assignment, support route/response target, privacy/legal acceptance, target environment readiness, real service smoke tests and privacy review of the aggregate report pack
+
+### 2026-08-02
+- Repo: backend, docs, tickets
+- Changed: HT-324 now measures activation, setup, documents, task engagement, property-aware chat and feedback as aggregate cohort metrics; repeat use is explicitly `not_instrumented`.
+- Verification: representative five-member MySQL cohort-report smoke passed with full fixture cleanup and response-boundary assertions.
+- Notes: HT-326 is the concrete next feature needed to make repeat use reportable. Partner-facing privacy/compliance approval remains a human launch blocker.
