@@ -64,3 +64,9 @@ This ticket is complete only when the reporting pack is both analytically useful
   - response contract verified no user/member/property IDs, document names, raw facts, feedback text or chat content
 - Notes: product/pilot owner interpretation and privacy/compliance approval remain required before external partner sharing.
   Backend implementation is ready for review in https://github.com/jasonlryan/HomeTruth-be/pull/3 at `a1c78ba`.
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 now implements the previously missing repeat-use metric with consent-bound daily activity and an aggregate two-day participant calculation.
+- Verification: local representative-data smoke verified daily dedupe and a 50% repeat-use rate for one returning member in a two-member cohort.
+- Notes: HT-326 code review and target-environment smoke remain pending; privacy/compliance acceptance remains required before external reporting.

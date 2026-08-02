@@ -76,6 +76,12 @@ This is the final launch gate. It should remain `no_go` until HT-318 and HT-319 
 - Verification: disposable five-member local MySQL cohort smoke passed; aggregate response contract excluded individual identifiers and sensitive content.
 - Notes: decision remains `no_go`. This does not replace product/pilot interpretation or privacy/compliance approval, and it is not target-environment evidence.
 
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 adds the repeat-use metric to the aggregate cohort report, with authenticated daily activity and no contextual metadata.
+- Verification: representative local MySQL smoke passed; both HT-326 code PRs are awaiting review.
+- Notes: decision remains `no_go` until the PRs merge and pass target-environment smoke alongside the existing operational and privacy blockers.
+
 ### 2026-05-31
 - Repo: tickets
 - Changed: added HT-324 as the follow-up for admin report metric coverage and partner-facing aggregate privacy review.

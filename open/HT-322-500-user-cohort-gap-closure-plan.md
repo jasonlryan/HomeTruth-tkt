@@ -361,3 +361,9 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Changed: HT-324 now measures activation, setup, documents, task engagement, property-aware chat and feedback as aggregate cohort metrics; repeat use is explicitly `not_instrumented`.
 - Verification: representative five-member MySQL cohort-report smoke passed with full fixture cleanup and response-boundary assertions.
 - Notes: HT-326 is the concrete next feature needed to make repeat use reportable. Partner-facing privacy/compliance approval remains a human launch blocker.
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 implements consent-bound daily activity and the aggregate repeat-use metric; the reporting response now marks repeat use as measured.
+- Verification: two-member MySQL smoke passed with same-day dedupe, two-day repeat counting and full fixture cleanup.
+- Notes: code is awaiting review in backend PR #4 and frontend PR #2. The pilot remains `no_go` pending target-environment, owner and privacy/compliance decisions.

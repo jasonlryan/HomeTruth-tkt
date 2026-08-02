@@ -33,14 +33,29 @@ Add an authenticated, consent-bound daily pilot activity event and extend the co
 
 ## Acceptance Criteria
 
-- [ ] Authenticated activity events are accepted only for the current user and resolved through existing cohort consent rules.
-- [ ] A cohort member generates at most one daily activity event per UTC day.
-- [ ] Activity metadata contains no route, property, document, chat or free-text content.
-- [ ] The report exposes `repeatActiveMembers` and a repeat-use rate calculated from at least two distinct UTC activity dates.
-- [ ] Anonymous invite-view tracking remains available before login and cannot impersonate an authenticated member.
-- [ ] Focused automated verification and representative-data smoke pass.
-- [ ] HT-324, HT-322 and HT-320 reflect the resulting metric coverage.
+- [x] Authenticated activity events are accepted only for the current user and resolved through existing cohort consent rules.
+- [x] A cohort member generates at most one daily activity event per UTC day.
+- [x] Activity metadata contains no route, property, document, chat or free-text content.
+- [x] The report exposes `repeatActiveMembers` and a repeat-use rate calculated from at least two distinct UTC activity dates.
+- [x] Anonymous invite-view tracking remains available before login and cannot impersonate an authenticated member.
+- [x] Focused automated verification and representative-data smoke pass.
+- [x] HT-324, HT-322 and HT-320 reflect the resulting metric coverage.
 
 ## Review / Decision Gate
 
 This ticket is technically complete when the metric is accurate and aggregate-only. Product/pilot and privacy/compliance approval of the external reporting pack remain separate launch decisions.
+
+## Implementation Log
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed:
+  - backend PR #4 adds an authenticated `/api/partner-onboarding/activity` endpoint, daily uniqueness migration and aggregate repeat-use metric
+  - frontend PR #2 emits the activity signal once per signed-in user per UTC day, without contextual metadata
+  - public invite-view tracking remains before authentication
+- Verification:
+  - backend syntax checks and focused reporting verifier pass
+  - local migration `20260802110000-add-pilot-event-activity-date` applied successfully
+  - representative two-member MySQL smoke passed: same-day call deduplicated, two UTC dates produced one repeat member and a 50% repeat-use rate, then all fixtures were removed
+  - frontend production build passes with the existing unrelated lint warnings in `KnowledgeBaseAdmin.jsx` and `DataPrivacySettings.jsx`
+- Notes: implementation is awaiting the code review loop in backend PR #4 and frontend PR #2. Target-environment smoke, product/pilot interpretation and privacy/compliance acceptance remain separate launch work.
