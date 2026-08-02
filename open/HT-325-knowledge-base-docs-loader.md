@@ -34,12 +34,12 @@ Add an operator-run command that indexes markdown/text files from the HomeTruth 
 
 ## Acceptance Criteria
 
-- [ ] Backend exposes an npm script for loading docs into the knowledge base.
-- [ ] Loader defaults to the local HomeTruth docs folder and accepts an override path.
-- [ ] Loader indexes markdown/text files into MySQL `documents` rows and Qdrant points.
-- [ ] Loader is re-runnable without duplicating prior imports for the same source path.
-- [ ] Loader requires a real OpenAI API key before embedding work starts.
-- [ ] Script passes syntax validation.
+- [x] Backend exposes an npm script for loading docs into the knowledge base.
+- [x] Loader defaults to the local HomeTruth docs folder and accepts an override path.
+- [x] Loader indexes markdown/text files into MySQL `documents` rows and Qdrant points.
+- [x] Loader is re-runnable without duplicating prior imports for the same source path.
+- [x] Loader requires a real OpenAI API key before embedding work starts.
+- [x] Script passes syntax validation.
 - [ ] Any full import smoke is recorded, or explicitly deferred with the external dependency called out.
 
 ## Implementation Log
