@@ -57,3 +57,9 @@ This cannot be completed without privacy/legal confirmation. Key decision: what 
   - `HomeTruth-tickets/open/HT-319-data-deletion-consent-withdrawal-runbook.md`
 - Verification: drafted consent-scope withdrawal behaviour, delete/anonymise object map, Qdrant implications, process states, partner-reporting impact and manual checklist.
 - Notes: still blocked on privacy/legal owner, identity verification route, target handling time, escalation owner and delete-versus-anonymise policy approval.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: Jason Ryan is recorded as interim privacy operations and escalation owner.
+- Verification: owner assignment supplied directly by the pilot owner.
+- Notes: this permits operational preparation, but external legal/privacy review, identity verification, handling time and delete-versus-anonymise policy approval remain open decisions.

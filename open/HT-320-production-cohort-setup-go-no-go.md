@@ -86,7 +86,13 @@ This is the final launch gate. It should remain `no_go` until HT-318 and HT-319 
 - Repo: backend, frontend, docs, tickets
 - Changed: HT-326 backend and frontend PRs merged; backend `main` is at `0b5a164` and frontend `main` is at `2c0ccab`.
 - Verification: merged mains were pulled locally; local migration and representative repeat-use smoke had already passed.
-- Notes: the remaining HT-320 flight path is target-environment migration and full rehearsal, named support/privacy owners, partner configuration and formal go/no-go ownership. Decision remains `no_go`.
+- Notes: the remaining HT-320 flight path is target-environment migration and full rehearsal, HT-327 mailbox validation, legal/privacy approval, partner configuration and final go/no-go evidence. Decision remains `no_go`.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: Jason Ryan is recorded as interim pilot owner and go/no-go decision owner.
+- Verification: owner assignment supplied directly by the pilot owner.
+- Notes: decision remains `no_go` pending the target-environment rehearsal, operational/legal gates and partner configuration.
 
 ### 2026-05-31
 - Repo: tickets

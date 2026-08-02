@@ -26,8 +26,8 @@ HT-317 proved the technical pilot reporting path but left operational launch blo
 
 ## Acceptance Criteria
 
-- [ ] Named pilot support owner is recorded.
-- [ ] Named technical escalation contact is recorded.
+- [x] Named pilot support owner is recorded.
+- [x] Named technical escalation contact is recorded.
 - [ ] Provisional support route, support hours and expected first-response time are validated against a real mailbox.
 - [x] Issue categories are defined: invite failure, login/signup, consent question, property setup, document/task issue, data deletion/withdrawal, incident.
 - [x] Severity levels and escalation rules are defined.
@@ -60,10 +60,16 @@ This cannot be completed without human ownership decisions. Required inputs: sup
 - Repo: docs, tickets
 - Changed: adopted `support@hometruth.io` as the provisional user-facing pilot support route and added mailbox-validation criteria.
 - Verification: documentation only; no mailbox delivery, reply, forwarding or escalation test has been performed.
-- Notes: proposed temporary service target is one business-day first response, Monday to Friday, 09:00-17:00 UK time. HT-318 remains blocked on mailbox validation, a temporary escalation contact and named permanent owners.
+- Notes: proposed temporary service target is one business-day first response, Monday to Friday, 09:00-17:00 UK time. HT-318 remains blocked on HT-327 mailbox validation and final acceptance; interim ownership can be revised before launch.
 
 ### 2026-08-02
 - Repo: tickets
 - Changed: created HT-327 to separate mailbox provisioning and validation from the broader support ownership gate.
 - Verification: HT-327 contains the required inbound, outbound, monitoring and evidence checks.
 - Notes: mailbox validation can now progress independently; it does not remove the need for named support, technical escalation and incident owners.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: Jason Ryan is recorded as interim pilot support owner, technical escalation contact and incident owner; interim coverage is one business-day first response, Monday to Friday, 09:00-17:00 UK time.
+- Verification: owner assignment supplied directly by the pilot owner.
+- Notes: HT-327 mailbox validation remains required before `support@hometruth.io` is published. This interim assignment can be revised before launch.

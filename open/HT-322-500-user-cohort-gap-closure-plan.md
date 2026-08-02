@@ -154,10 +154,10 @@ Required outputs:
 
 Acceptance criteria:
 
-- [ ] Pilot support owner is named.
-- [ ] Technical escalation contact is named.
-- [ ] Incident owner is named.
-- [ ] Support hours and first-response target are recorded.
+- [x] Pilot support owner is named: Jason Ryan, interim.
+- [x] Technical escalation contact is named: Jason Ryan, interim.
+- [x] Incident owner is named: Jason Ryan, interim.
+- [x] Support hours and first-response target are recorded: Monday to Friday, 09:00-17:00 UK time; one business-day first response.
 - [x] Issue categories are defined.
 - [x] Severity levels and escalation rules are defined.
 - [x] User-facing holding replies are drafted.
@@ -386,3 +386,9 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Changed: created HT-327 as the standalone mailbox-provisioning task for `support@hometruth.io`.
 - Verification: HT-327 defines the delivery, reply, monitoring, coverage and evidence checks needed to clear the route-validation blocker.
 - Notes: HT-327 can proceed without permanent role assignment, but it does not close HT-318 or the launch gate.
+
+### 2026-08-02
+- Repo: docs, tickets
+- Changed: Jason Ryan is assigned as interim pilot support, technical escalation, incident, privacy operations and go/no-go owner.
+- Verification: owner assignment supplied directly by the pilot owner.
+- Notes: the remaining blockers are external capability and evidence: HT-327 mailbox validation, legal/privacy review, target-environment configuration/rehearsal, partner configuration and aggregate-report approval.
