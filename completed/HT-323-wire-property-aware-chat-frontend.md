@@ -114,13 +114,13 @@ Acceptance criteria:
 
 Acceptance criteria:
 
-- [ ] Smoke data includes at least one property-linked document/fact/task.
-- [ ] Smoke data includes another property or unrelated user document that should not be retrieved.
-- [ ] Property-scoped chat response uses selected-property context.
-- [ ] Property-scoped chat response excludes unrelated property/user context.
-- [ ] No-property chat mode still follows the documented all-current-user-document fallback.
+- [x] Smoke data includes at least one property-linked document/fact/task.
+- [x] Smoke data includes another property or unrelated user document that should not be retrieved.
+- [x] Property-scoped chat response uses selected-property context.
+- [x] Property-scoped chat response excludes unrelated property/user context.
+- [x] No-property chat mode still follows the documented all-current-user-document fallback.
 - [x] Local backend boundary script verifies user/document Qdrant scoping and empty property document scope does not fall back to all user vectors.
-- [ ] OpenAI project has enough quota to generate real smoke embeddings and chat response.
+- [x] OpenAI project has enough quota to generate real smoke embeddings and chat response.
 
 ### Phase 5: Visual Review
 
@@ -247,3 +247,40 @@ Confirm whether property-aware chat should live inside the property profile as a
   - Follow-up local count check again confirmed zero HT-323 smoke users, properties and documents remain.
 - Current status:
   - HT-323 remains open. The next move is to use an OpenAI key whose owning project/organization has available credits, then rerun the same Phase 4 smoke.
+
+### 2026-08-02
+- Repo: backend, tickets
+- Verification:
+  - Re-ran the full Phase 4 target-environment smoke with the updated OpenAI key.
+  - Local backend ran on `http://localhost:4010`.
+  - Local MySQL was reachable through Docker.
+  - Local Qdrant ran on `localhost:6333` with `home_truth_documents` and `user_documents` initialized.
+  - Synthetic smoke data included:
+    - one selected property with linked boiler-service document, property fact and open task
+    - one unrelated property with unrelated user document, property fact and open task
+  - Real OpenAI embeddings were created and stored in Qdrant:
+    - selected document vectors: 1
+    - unrelated document vectors: 1
+  - Direct retrieval boundary check passed:
+    - selected-property scope: `selected_property_documents`
+    - unscoped fallback: `all_current_user_documents`
+    - selected marker present in scoped context
+    - unrelated marker absent from scoped context
+    - source classes: `uploaded_user_document`, `property_record`
+  - Authenticated API smoke against `/api/ai_chat/chat` passed:
+    - property-scoped request returned `success: true`
+    - `ragContext.hasContext: true`
+    - `ragContext.scope.propertyId` matched the selected property
+    - `ragContext.scope.userDocumentScope: selected_property_documents`
+    - `ragContext.counts.uploadedUserDocuments: 1`
+    - `ragContext.counts.propertyRecords: 1`
+    - source classes included `uploaded_user_document` and `property_record`
+  - No-property authenticated API smoke passed:
+    - `ragContext.scope.propertyId: null`
+    - `ragContext.scope.userDocumentScope: all_current_user_documents`
+    - `ragContext.counts.uploadedUserDocuments: 2`
+- Cleanup:
+  - Synthetic HT-323 smoke rows and vectors were removed.
+  - Follow-up local count check confirmed zero HT-323 smoke users, properties and documents remain.
+- Current status:
+  - HT-323 complete.
