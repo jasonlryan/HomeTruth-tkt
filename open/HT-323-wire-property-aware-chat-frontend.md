@@ -4,7 +4,7 @@
 **Repo:** frontend
 **Milestone:** 500-user insurer pilot readiness
 **Created:** 2026-05-31
-**Updated:** 2026-05-31
+**Updated:** 2026-08-02
 
 ## Goal
 
@@ -102,11 +102,11 @@ Acceptance criteria:
 
 Acceptance criteria:
 
-- [ ] Launch Ask AI by clicking “Ask about this property” from a real property profile.
-- [ ] Submit a property question from Ask AI.
-- [ ] Verify the `/api/ai_chat/chat` request payload includes the selected `propertyId`.
-- [ ] Clear context or start a new session.
-- [ ] Verify subsequent `/api/ai_chat/chat` requests do not include `propertyId`.
+- [x] Launch Ask AI by clicking “Ask about this property” from a real property profile.
+- [x] Submit a property question from Ask AI.
+- [x] Verify the `/api/ai_chat/chat` request payload includes the selected `propertyId`.
+- [x] Clear context or start a new session.
+- [x] Verify subsequent `/api/ai_chat/chat` requests do not include `propertyId`.
 
 ### Phase 4: Retrieval Boundary Smoke
 
@@ -119,6 +119,7 @@ Acceptance criteria:
 - [ ] Property-scoped chat response uses selected-property context.
 - [ ] Property-scoped chat response excludes unrelated property/user context.
 - [ ] No-property chat mode still follows the documented all-current-user-document fallback.
+- [x] Local backend boundary script verifies user/document Qdrant scoping and empty property document scope does not fall back to all user vectors.
 
 ### Phase 5: Visual Review
 
@@ -126,11 +127,11 @@ Acceptance criteria:
 
 Acceptance criteria:
 
-- [ ] Empty Ask AI state with property context is reviewed on desktop.
-- [ ] Active conversation state with property context is reviewed on desktop.
-- [ ] Empty Ask AI state with property context is reviewed on mobile.
-- [ ] Active conversation state with property context is reviewed on mobile.
-- [ ] The context indicator text and clear action fit without overlap or truncation.
+- [x] Empty Ask AI state with property context is reviewed on desktop.
+- [x] Active conversation state with property context is reviewed on desktop.
+- [x] Empty Ask AI state with property context is reviewed on mobile.
+- [x] Active conversation state with property context is reviewed on mobile.
+- [x] The context indicator text and clear action fit without overlap or truncation.
 
 ## Acceptance Criteria
 
@@ -140,8 +141,8 @@ Acceptance criteria:
 - [x] Selected property id survives navigation from property profile to Ask AI.
 - [x] Ask AI displays a selected-property context indicator when property context is active.
 - [x] Starting a new general chat clears property context or makes fallback behaviour explicit.
-- [ ] Browser/API smoke verifies `/api/ai_chat/chat` receives `propertyId` from property-profile-launched chat.
-- [ ] Visual review covers desktop and mobile property-context chat state.
+- [x] Browser/API smoke verifies `/api/ai_chat/chat` receives `propertyId` from property-profile-launched chat.
+- [x] Visual review covers desktop and mobile property-context chat state.
 - [x] Implementation log records changed files and verification performed.
 
 ## Review / Decision Gate
@@ -170,3 +171,23 @@ Confirm whether property-aware chat should live inside the property profile as a
   - property profile now routes to Ask AI with selected property context
   - Ask AI shows the selected-property context and passes `propertyId` into authenticated chat requests
   - ticket remains open for real browser/API smoke against the target backend and visual review
+
+### 2026-08-02
+- Repo: frontend, backend, tickets
+- Changed:
+  - `HT_Frontend-staging/src/pages/AskAI.jsx`
+  - `HomeTruth-tickets/open/HT-323-wire-property-aware-chat-frontend.md`
+- Verification:
+  - `npm run build` passes in `HT_Frontend-staging`
+  - Playwright local browser/API smoke on `http://localhost:3101` with mocked API responses:
+    - property profile opened with property `42`
+    - “Ask about this property” opened `/ask-ai?propertyId=42`
+    - first `/api/ai_chat/chat` request body included `"propertyId":42`
+    - Clear removed the query param and the next `/api/ai_chat/chat` request body omitted `propertyId`
+  - Desktop and mobile screenshots reviewed for empty and active property-context Ask AI states.
+  - `node scripts/verifyUnifiedRetrievalBoundaries.js` passes in `HomeTruth_BE-staging`
+  - build still reports pre-existing unrelated lint warnings in `KnowledgeBaseAdmin.jsx` and `DataPrivacySettings.jsx`
+- Notes:
+  - fixed a URL cleanup bug so Ask AI preserves `?propertyId=...` until the user explicitly clears context
+  - moved the active-chat context notice into the composer so it remains visible after auto-scroll
+  - ticket remains open for target-environment retrieval response smoke against real MySQL/Qdrant/OpenAI data
