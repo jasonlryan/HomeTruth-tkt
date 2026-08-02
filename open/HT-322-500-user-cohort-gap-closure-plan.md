@@ -36,6 +36,7 @@ This ticket coordinates the gap closure work and should be treated as the execut
 - HT-320: production cohort setup and go/no-go review
 - HT-321: property-aware unified retrieval layer
 - HT-324: pilot reporting coverage and privacy validation
+- HT-327: provision and validate the pilot support mailbox
 
 ## Workstreams
 
@@ -379,3 +380,9 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Changed: `support@hometruth.io` is the provisional user-facing pilot support route, subject to HT-318 mailbox validation.
 - Verification: no mailbox test yet; the route is not approved for publication.
 - Notes: this advances communication readiness without claiming that support ownership or escalation is solved.
+
+### 2026-08-02
+- Repo: tickets
+- Changed: created HT-327 as the standalone mailbox-provisioning task for `support@hometruth.io`.
+- Verification: HT-327 defines the delivery, reply, monitoring, coverage and evidence checks needed to clear the route-validation blocker.
+- Notes: HT-327 can proceed without permanent role assignment, but it does not close HT-318 or the launch gate.

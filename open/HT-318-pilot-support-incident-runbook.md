@@ -17,6 +17,7 @@ HT-317 proved the technical pilot reporting path but left operational launch blo
 ## Dependencies
 
 - HT-317: pilot analytics, reporting and readiness review
+- HT-327: provision and validate the pilot support mailbox
 
 ## Expected Files
 
@@ -60,3 +61,9 @@ This cannot be completed without human ownership decisions. Required inputs: sup
 - Changed: adopted `support@hometruth.io` as the provisional user-facing pilot support route and added mailbox-validation criteria.
 - Verification: documentation only; no mailbox delivery, reply, forwarding or escalation test has been performed.
 - Notes: proposed temporary service target is one business-day first response, Monday to Friday, 09:00-17:00 UK time. HT-318 remains blocked on mailbox validation, a temporary escalation contact and named permanent owners.
+
+### 2026-08-02
+- Repo: tickets
+- Changed: created HT-327 to separate mailbox provisioning and validation from the broader support ownership gate.
+- Verification: HT-327 contains the required inbound, outbound, monitoring and evidence checks.
+- Notes: mailbox validation can now progress independently; it does not remove the need for named support, technical escalation and incident owners.
