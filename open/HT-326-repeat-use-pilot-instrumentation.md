@@ -58,4 +58,10 @@ This ticket is technically complete when the metric is accurate and aggregate-on
   - local migration `20260802110000-add-pilot-event-activity-date` applied successfully
   - representative two-member MySQL smoke passed: same-day call deduplicated, two UTC dates produced one repeat member and a 50% repeat-use rate, then all fixtures were removed
   - frontend production build passes with the existing unrelated lint warnings in `KnowledgeBaseAdmin.jsx` and `DataPrivacySettings.jsx`
-- Notes: implementation is awaiting the code review loop in backend PR #4 and frontend PR #2. Target-environment smoke, product/pilot interpretation and privacy/compliance acceptance remain separate launch work.
+- Notes: at the time of this entry, implementation awaited the code review loop in backend PR #4 and frontend PR #2. Target-environment smoke, product/pilot interpretation and privacy/compliance acceptance remain separate launch work.
+
+### 2026-08-02
+- Repo: backend, frontend, tickets
+- Changed: backend PR #4 and frontend PR #2 merged; the daily activity endpoint, database uniqueness constraint, report metric and frontend emission are on `main`.
+- Verification: backend `0b5a164` and frontend `2c0ccab` were pulled locally after merge.
+- Notes: HT-326 implementation is complete. It still needs target-environment migration and end-to-end repeat-use smoke as part of HT-320; that is launch verification, not unfinished feature work.

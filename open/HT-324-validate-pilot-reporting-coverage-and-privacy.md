@@ -30,7 +30,7 @@ This ticket closes that reporting gap by mapping each metric to an admin report 
 
 ## Acceptance Criteria
 
-- [x] Each HT-322 success metric is mapped to an admin report field or source event, or explicitly marked `not_instrumented`.
+- [x] Each HT-322 success metric is mapped to an admin report field or source event.
 - [x] Missing metrics are listed with required backend/reporting changes.
 - [x] `/api/admin/pilot/cohort-report` is smoke-tested against representative pilot data.
 - [ ] Partner-facing report pack is reviewed for aggregate-only output by the product/pilot owner.
@@ -69,4 +69,10 @@ This ticket is complete only when the reporting pack is both analytically useful
 - Repo: backend, frontend, docs, tickets
 - Changed: HT-326 now implements the previously missing repeat-use metric with consent-bound daily activity and an aggregate two-day participant calculation.
 - Verification: local representative-data smoke verified daily dedupe and a 50% repeat-use rate for one returning member in a two-member cohort.
-- Notes: HT-326 code review and target-environment smoke remain pending; privacy/compliance acceptance remains required before external reporting.
+- Notes: at the time of this entry, HT-326 code review and target-environment smoke remained pending; privacy/compliance acceptance remains required before external reporting.
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 backend and frontend implementations merged, completing the previously missing repeat-use reporting source.
+- Verification: backend `0b5a164` and frontend `2c0ccab` were pulled to local `main` worktrees.
+- Notes: HT-324 remains open only for product/pilot interpretation and privacy/compliance acceptance of the partner-facing aggregate pack, plus target-environment report smoke.

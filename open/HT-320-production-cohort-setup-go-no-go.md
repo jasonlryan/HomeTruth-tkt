@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs / tickets
 **Milestone:** 500-user insurer pilot readiness
 **Created:** 2026-05-30
-**Updated:** 2026-05-31
+**Updated:** 2026-08-02
 
 ## Goal
 
@@ -79,8 +79,14 @@ This is the final launch gate. It should remain `no_go` until HT-318 and HT-319 
 ### 2026-08-02
 - Repo: backend, frontend, docs, tickets
 - Changed: HT-326 adds the repeat-use metric to the aggregate cohort report, with authenticated daily activity and no contextual metadata.
-- Verification: representative local MySQL smoke passed; both HT-326 code PRs are awaiting review.
-- Notes: decision remains `no_go` until the PRs merge and pass target-environment smoke alongside the existing operational and privacy blockers.
+- Verification: at the time of this entry, representative local MySQL smoke passed and both HT-326 code PRs awaited review.
+- Notes: superseded by the following merge entry; target-environment smoke alongside the existing operational and privacy blockers remains required.
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 backend and frontend PRs merged; backend `main` is at `0b5a164` and frontend `main` is at `2c0ccab`.
+- Verification: merged mains were pulled locally; local migration and representative repeat-use smoke had already passed.
+- Notes: the remaining HT-320 flight path is target-environment migration and full rehearsal, named support/privacy owners, partner configuration and formal go/no-go ownership. Decision remains `no_go`.
 
 ### 2026-05-31
 - Repo: tickets

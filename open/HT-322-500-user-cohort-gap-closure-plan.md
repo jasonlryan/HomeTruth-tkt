@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs / tickets
 **Milestone:** 500-user insurer pilot readiness
 **Created:** 2026-05-31
-**Updated:** 2026-05-31
+**Updated:** 2026-08-02
 
 ## Goal
 
@@ -366,4 +366,10 @@ This ticket should not be marked complete until HT-318, HT-319 and HT-320 are ei
 - Repo: backend, frontend, docs, tickets
 - Changed: HT-326 implements consent-bound daily activity and the aggregate repeat-use metric; the reporting response now marks repeat use as measured.
 - Verification: two-member MySQL smoke passed with same-day dedupe, two-day repeat counting and full fixture cleanup.
-- Notes: code is awaiting review in backend PR #4 and frontend PR #2. The pilot remains `no_go` pending target-environment, owner and privacy/compliance decisions.
+- Notes: at the time of this entry, code awaited review in backend PR #4 and frontend PR #2. The pilot remains `no_go` pending target-environment, owner and privacy/compliance decisions.
+
+### 2026-08-02
+- Repo: backend, frontend, docs, tickets
+- Changed: HT-326 PRs #4 and #2 merged and their main branches were pulled locally.
+- Verification: backend `0b5a164`; frontend `2c0ccab`.
+- Notes: technical reporting gaps are now closed locally. The critical path is named support/privacy ownership, target-environment configuration and rehearsal, reporting approval, then the formal HT-320 decision.
