@@ -41,14 +41,14 @@ Make partner attribution, approved co-branding, campaign context and consent ver
 
 ## Acceptance Criteria
 
-- [ ] An eligible invite resolves to the correct active programme and campaign context.
-- [ ] The journey presents approved programme copy while retaining clear HomeTruth identity.
-- [ ] Required and optional consent scopes are comprehensible, separate and versioned.
-- [ ] A homeowner can proceed without granting optional partner data access.
-- [ ] Invalid, expired, paused and closed programme states have safe user-facing behaviour.
-- [ ] Campaign performance is measurable in aggregate without storing free-text or unnecessary partner PII.
-- [ ] Browser, API and privacy-boundary tests pass.
-- [ ] A feature branch, PR and clean review loop are completed.
+- [x] An eligible invite resolves to the correct active programme and campaign context.
+- [x] The journey presents approved programme copy while retaining clear HomeTruth identity.
+- [x] Required and optional consent scopes are comprehensible, separate and versioned.
+- [x] A homeowner can proceed without granting optional partner data access.
+- [x] Invalid, expired, paused and closed programme states have safe user-facing behaviour.
+- [x] Campaign performance is measurable in aggregate without storing free-text or unnecessary partner PII.
+- [x] Browser, API and privacy-boundary tests pass.
+- [x] A feature branch, PR and clean review loop are completed.
 
 ## Dependencies
 
@@ -78,3 +78,94 @@ Decision recorded 2026-08-03:
 - Run the frontend production build and changed-file lint.
 - Browser-smoke the exact frontend feature head for insurer, mortgage-provider, home-developer and other-B2B presentation; unauthenticated invitation; authenticated consent with every optional scope declined; invalid/expired/paused/closed states; support route; accessibility; and narrow/mobile layout.
 - Complete the base-branch review/fix loop and record PR URLs, base/head SHAs, final local gates, CI, mergeability and target-environment or HT-319 launch gaps before closure.
+
+## Delivery Status
+
+Clear to merge as of 2026-08-03. The ticket remains open until both implementation PRs are merged and their merge commits are pulled into the authoritative backend and frontend `main` worktrees.
+
+- Backend: [HomeTruth-be PR #6](https://github.com/jasonlryan/HomeTruth-be/pull/6)
+  - base: `06efd28c8acab65a882d6877063c935c2f573d85`
+  - head: `2df98e9a14fe7986b083863224f2690faafa05b7`
+  - ready, mergeable and `CLEAN`
+  - GitGuardian Security Checks passed
+- Frontend: [HomeTruth-fe PR #4](https://github.com/jasonlryan/HomeTruth-fe/pull/4)
+  - base: `86c9338429a37ccf5b45bf1fe2d507c8d689227f`
+  - head: `ccbf484ee5f240e6c357fdf3cb7baa50378a0d06`
+  - ready, mergeable and `CLEAN`
+  - GitGuardian Security Checks passed
+
+## Implementation Log
+
+### 2026-08-03 — Contract And Documentation
+
+- Recorded the shared-core workstreams, exclusions, consent decisions, attribution boundary and required verification before code changes.
+- Added `docs/product/partner-acquisition-consent-contract.md` and linked it from the B2B2C programme scope.
+- Documentation commit on `hometruth` main: `34cabfa` (`HT-330: document acquisition consent contract`).
+- The contract covers insurer, mortgage-provider, home-developer and other B2B programmes; no insurer-only runtime path was introduced.
+
+### 2026-08-03 — Backend
+
+- Branch: `feature/ht-330-branded-acquisition-consent`.
+- Added validated campaign acquisition and consent configuration, canonical scope/version/text-hash derivation and programme-aware invite responses.
+- Preserved both cohort-code and individual-invite modes while removing public member, user and property identifiers.
+- Made HomeTruth processing the only required scope; all three partner-facing scopes are independent and optional.
+- Added atomic consent replacement, stable programme/campaign event attribution and allowlisted acquisition metadata.
+- Added public server-controlled invite-view capture, ignored unknown invite telemetry and required processing consent before property start or attachment.
+- Added programme/campaign event columns and campaign configuration columns through reversible migration `20260803100000-add-partner-acquisition-consent.js`.
+- Added focused verifier `scripts/verifyPartnerAcquisitionJourney.js` and real-MySQL fixture smoke `scripts/smokePartnerAcquisitionJourney.js`.
+
+### 2026-08-03 — Frontend
+
+- Branch: `feature/ht-330-branded-acquisition-consent`.
+- Rebuilt the programme landing and onboarding route around approved campaign content, visible HomeTruth identity, privacy boundary, support and safe lifecycle states.
+- Added explicit consent choices that all begin off, require an active HomeTruth-processing choice and permit every partner-facing scope to remain declined.
+- Removed browser-supplied consent versions and the local consent-complete bypass.
+- Limited stored partner context to the invite plus stable programme, campaign and cohort keys.
+- Extended operator programme creation with approved acquisition copy, setup expectations, support, branding and consent-version fields.
+- Added reusable visual-harness fixtures for all four shared partner types, guest/authenticated states and invalid lifecycle states.
+- Made FAQ support accessible to both guest and authenticated homeowners.
+
+## Verification Evidence
+
+### Database And Backend
+
+- Migration status before: `20260803100000-add-partner-acquisition-consent.js` was `down`; all earlier migrations were `up`.
+- Applied the migration, verified it `up`, rolled it back, verified it `down`, re-applied it and verified the final status `up` against local MySQL.
+- Syntax checks passed for every JavaScript file in the complete backend `main...head` diff.
+- Complete backend `git diff --check` passed.
+- Focused acquisition contract verifier passed across insurer, mortgage-provider, home-developer and other.
+- Existing partner-programme lifecycle verifier passed.
+- Existing pilot-reporting coverage verifier passed.
+- Real MySQL acquisition smoke passed with fixture cleanup for all four partner types, active programme/campaign resolution, both invite modes, required/optional consent, forged-client version/hash rejection, atomic re-consent, property consent enforcement, public privacy, safe lifecycle states, unknown invite telemetry and programme/campaign attribution.
+- Existing partner-programme lifecycle MySQL smoke passed.
+
+### Frontend And Browser
+
+- Focused frontend tests: 2 suites, 8 tests passed.
+- Production build passed. It retains two pre-existing unrelated unused-variable warnings in `KnowledgeBaseAdmin.jsx` and `DataPrivacySettings.jsx`, plus the repository's existing Browserslist-age and bundle-size notices.
+- Changed-file ESLint passed with no findings.
+- Complete frontend `git diff --check` passed.
+- Playwright exact-head browser smoke passed for insurer, mortgage-provider, home-developer and other-B2B presentation.
+- Guest invitation and authenticated consent passed with every optional permission declined.
+- Required-consent error/focus behaviour, safe stored context, guest and authenticated support navigation, invalid/expired/paused/closed states and semantic structure passed.
+- The 390px exact-head mobile layout was visually inspected and passed.
+- Final journey and support states reported zero console errors.
+
+### Review/Fix Loop
+
+- Review source: clean backend and frontend `main` worktrees at the base SHAs above, using the complete three-dot diff.
+- Backend findings fixed:
+  - direct property start/attachment did not independently enforce required HomeTruth processing consent;
+  - unknown invite codes could create unscoped telemetry rows.
+- Frontend findings fixed:
+  - downstream property setup still cached member/property identifiers instead of the safe context contract;
+  - the configured `/faq` support route redirected authenticated users to the dashboard.
+- Regression evidence was added or extended for each relevant boundary.
+- Repeated base-to-feature review found no remaining actionable issues.
+- Both PRs stayed draft throughout the fix loop and were made ready exactly once after the final local gates passed.
+
+## Remaining Gaps
+
+- HT-319 remains a live-launch blocker for approved withdrawal/deletion policy, identity verification and handling times.
+- No target-environment migration, deployment or browser smoke has been performed; those checks must run before production launch.
+- HT-331/HT-332 remain responsible for the partner evidence dashboard and governed partner access. HT-330 does not grant partner self-service or individual homeowner data access.
