@@ -124,6 +124,9 @@ Both complete `main...feature/ht-332-governed-partner-access` diffs were reviewe
 
 ### CI and Remaining Gap
 
-- GitGuardian security checks passed on both reviewed heads while the PRs were draft.
-- No review requests or review threads were present when this evidence was recorded.
+- Both PRs were marked ready for review once, after the second base-branch review and final local gates passed.
+- Backend PR #7 is mergeable on unchanged head `6f0aeb3e033480242b32fd1ab2452207c3613819`; GitGuardian passed and no review requests or review threads are present.
+- Frontend PR #5 is mergeable on unchanged head `43688730b16aa393617e8e6d7fb07f241afcb4d5`; GitGuardian passed and no review requests or review threads are present.
+- Both PR descriptions were updated to match the final implementation, review fixes, exact-head checks and scope boundaries.
+- Clear-to-merge conclusion: both implementation PRs are locally and remotely clear to merge at the recorded heads.
 - Target-environment migration, deployment and smoke have not been run. This is a deployment-stage gap, not a local clear-to-merge claim.
