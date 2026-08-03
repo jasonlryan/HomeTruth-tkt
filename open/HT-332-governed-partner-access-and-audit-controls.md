@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs
 **Milestone:** B2B2C partner-programme foundation
 **Created:** 2026-08-02
-**Updated:** 2026-08-02
+**Updated:** 2026-08-03
 
 ## Goal
 
@@ -39,13 +39,13 @@ Define and enforce partner roles, programme scoping, consent-aware access checks
 
 ## Acceptance Criteria
 
-- [ ] Each partner-facing role has documented allowed and denied actions.
-- [ ] Authorization is enforced server-side by partner and programme scope.
-- [ ] Individual homeowner, property, document and task resources are denied by default.
-- [ ] Administrative changes, report access and exports produce reviewable audit records.
-- [ ] Consent and programme status changes immediately affect applicable access.
-- [ ] Negative authorization and audit tests pass.
-- [ ] A feature branch, PR and clean review loop are completed.
+- [x] Each partner-facing role has documented allowed and denied actions.
+- [x] Authorization is enforced server-side by partner and programme scope.
+- [x] Individual homeowner, property, document and task resources are denied by default.
+- [x] Administrative changes produce reviewable audit records, and the audit schema reserves governed report-view and report-export event types for HT-331.
+- [x] Programme status changes immediately affect applicable access; consent and threshold checks remain mandatory before HT-331 exposes any report access.
+- [x] Negative authorization and audit tests pass.
+- [x] A feature branch, one draft PR per implementation repository and a clean base-branch review loop are completed.
 
 ## Dependencies
 
@@ -77,3 +77,53 @@ Decision recorded 2026-08-03:
 - Run the frontend production build, changed-file lint and `git diff --check`.
 - Browser-smoke the exact frontend feature head for each partner role, operator grant/change/revoke, cross-programme denial, paused/closed behaviour, explicit privacy boundary, keyboard/focus states and 390px mobile layout.
 - Complete the base-branch review/fix loop and record PR URLs, base/head SHAs, final local gates, CI, mergeability and target-environment gaps before closure.
+
+## Implementation Evidence
+
+Implementation date: 2026-08-03. The ticket remains open until both implementation PRs merge.
+
+### Pull Requests
+
+- Backend: https://github.com/jasonlryan/HomeTruth-be/pull/7
+  - base: `main` at `4fc46ee1ddbd8843be0540d039c007d82db9dd8f`
+  - reviewed head: `6f0aeb3e033480242b32fd1ab2452207c3613819`
+  - draft while this evidence was recorded
+- Frontend: https://github.com/jasonlryan/HomeTruth-fe/pull/5
+  - base: `main` at `52352e7ec5bd6575da1e58f2f794321d335595a2`
+  - reviewed head: `43688730b16aa393617e8e6d7fb07f241afcb4d5`
+  - draft while this evidence was recorded
+
+### Delivered Boundary
+
+- A reusable assignment and role model covers insurers, mortgage providers, home developers and other B2B clients through one shared policy.
+- HomeTruth administrators can grant, change and revoke programme access for an exact verified account email. There is no partner self-service configuration or general user directory.
+- Partner access requires an active assignment and exact partner/programme scope. Programme operational access fails closed outside active lifecycle state; authorised historical audit remains available where the role contract permits it.
+- Partner responses contain programme and partner summaries, role, current implemented capabilities and the fixed aggregate-only privacy boundary. They contain no homeowner identifiers or individual records.
+- Explicit partner routes for homeowner, member, property, document, task, profile, chat and behavioural-event resources deny access and record the attempt without returning identifying data.
+- Access and programme lifecycle events are combined into a privacy-safe audit response using only coarse actor categories.
+- HT-331 must reuse this authorization service and add consent, minimum-cohort threshold, metric-definition and export gates before any aggregate evidence is returned. HT-332 exposes no report or export endpoint.
+
+### Base-Branch Review/Fix Loop
+
+Both complete `main...feature/ht-332-governed-partner-access` diffs were reviewed from clean, current base worktrees. Findings were fixed and the complete diffs were reviewed again.
+
+- Backend fixes: fail-closed partner/programme consistency in all access discovery paths; non-noisy access-status discovery; programme-summary and lifecycle audit coverage; coarse audit actor categories; removal of future report capabilities from current responses; safe concurrent duplicate handling; corrupt-scope smoke coverage.
+- Frontend fixes: durable 403 presentation after stale-summary refresh; role-aware inactive-state copy; access-status sidebar discovery; removal of future report capability assumptions; coarse actor presentation with unknown fail-safe; stale mutation feedback clearing.
+- Second review result: no remaining actionable findings.
+
+### Final Local Verification
+
+- Migration recorded down before application, applied, rolled back, re-applied and ended `up` for `20260803150000-create-partner-programme-access.js`.
+- Syntax checks passed for every changed backend JavaScript file.
+- Partner-access policy verifier and real-MySQL smoke passed across all four roles and all four partner types, including grant/change/revoke, duplicate, revoked, cross-programme, corrupt-scope, lifecycle, explicit individual-resource denial, audit and privacy assertions.
+- Existing lifecycle, acquisition and pilot-reporting verifiers passed; existing lifecycle and acquisition MySQL smokes passed.
+- Frontend focused tests passed: 3 suites, 12 tests.
+- Changed-file ESLint and production build passed. Build output contains only two pre-existing unrelated unused-variable warnings plus existing Browserslist and bundle-size notices.
+- Exact-head browser review passed for all four roles and all four B2B partner types; active, paused, closed, empty, denied, audit, admin validation/grant/change/revoke and 390px states had zero console errors.
+- `git diff --check` passed in both implementation repositories.
+
+### CI and Remaining Gap
+
+- GitGuardian security checks passed on both reviewed heads while the PRs were draft.
+- No review requests or review threads were present when this evidence was recorded.
+- Target-environment migration, deployment and smoke have not been run. This is a deployment-stage gap, not a local clear-to-merge claim.
