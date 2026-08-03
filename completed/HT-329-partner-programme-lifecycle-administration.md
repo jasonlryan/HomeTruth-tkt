@@ -4,7 +4,7 @@
 **Repo:** backend / frontend
 **Milestone:** B2B2C partner-programme foundation
 **Created:** 2026-08-02
-**Updated:** 2026-08-02
+**Updated:** 2026-08-03
 
 ## Goal
 
@@ -119,8 +119,18 @@ CI and PR state on 2026-08-02:
 - GitGuardian Security Checks passed on both exact PR heads.
 - These PRs expose no repository-specific GitHub Actions build or test workflow beyond the configured GitGuardian check; the build, tests, migration checks, MySQL smoke and browser gate above are the final implementation gates.
 
-## Current Status And Remaining Gaps
+## Post-Merge Verification
 
-- HT-329 is clear to merge but remains open until both implementation PRs are merged and the post-merge branch/worktree verification is recorded.
+Completed 2026-08-03:
+
+- Backend PR https://github.com/jasonlryan/HomeTruth-be/pull/5 merged into `main` as `06efd28c8acab65a882d6877063c935c2f573d85`.
+- Frontend PR https://github.com/jasonlryan/HomeTruth-fe/pull/3 merged into `main` as `86c9338429a37ccf5b45bf1fe2d507c8d689227f`.
+- The clean backend `main` worktree was fast-forwarded to `06efd28c8acab65a882d6877063c935c2f573d85`, and the merge commit was verified as present.
+- The clean frontend `main` worktree was fast-forwarded to `86c9338429a37ccf5b45bf1fe2d507c8d689227f`, and the merge commit was verified as present.
+- Both pulled `main` worktrees are clean and match `origin/main`.
+
+## Completion Status And Remaining Boundaries
+
+- HT-329 is complete. Its implementation, review/fix loop, final checks, merge and post-merge verification are recorded above.
 - No target deployment or production data migration was performed in this workstream.
 - Partner self-service, SSO, CRM/external integrations, governed partner roles and any individual-data sharing remain out of scope and are governed by later HT-328 workstreams, including HT-332.

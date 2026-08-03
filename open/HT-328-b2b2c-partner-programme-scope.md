@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs / tickets
 **Milestone:** B2B2C partner-programme foundation
 **Created:** 2026-08-02
-**Updated:** 2026-08-02
+**Updated:** 2026-08-03
 
 ## Goal
 
@@ -45,7 +45,7 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - [x] Functional B2B partnership direction is defined for insurers, mortgage providers, home developers and other B2B clients.
 - [x] The shared core and vertical-pack boundary are documented.
 - [x] Functional workstreams are ticketed and sequenced.
-- [ ] A partner programme can be configured, activated, paused and closed without a code change for each client.
+- [x] A partner programme can be configured, activated, paused and closed without a code change for each client.
 - [ ] An invited homeowner receives the correct programme context and can make separate consent choices.
 - [ ] Partner roles are programme-scoped, auditable and denied individual homeowner data by default.
 - [ ] A partner can view decision-ready, thresholded aggregate programme evidence only.
@@ -67,3 +67,9 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - Changed: reframed HT-328 as the active functional B2B partnership foundation, with generic partner-programme capabilities delivered through HT-329 through HT-334.
 - Verification: direction supplied directly by the product owner: support insurers, mortgage providers, home developers and other B2B clients through a shared core.
 - Notes: insurers are a reference pack, not a product fork. Code implementation is outstanding.
+
+### 2026-08-03
+- Repo: backend, frontend, tickets
+- Changed: completed and merged HT-329, providing shared operator-controlled partner, programme, campaign, cohort and lifecycle administration for insurer, mortgage-provider, home-developer and other B2B client types.
+- Verification: backend PR #5 merged as `06efd28c8acab65a882d6877063c935c2f573d85`; frontend PR #3 merged as `86c9338429a37ccf5b45bf1fe2d507c8d689227f`; both clean `main` worktrees were fast-forwarded and verified against `origin/main`.
+- Notes: HT-328 remains open. HT-330 is the next planned functional workstream and must build programme-aware acquisition and consent on the shared HT-329 lifecycle rather than introducing a vertical-specific path.
