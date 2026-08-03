@@ -46,7 +46,7 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - [x] The shared core and vertical-pack boundary are documented.
 - [x] Functional workstreams are ticketed and sequenced.
 - [x] A partner programme can be configured, activated, paused and closed without a code change for each client.
-- [ ] An invited homeowner receives the correct programme context and can make separate consent choices.
+- [x] An invited homeowner receives the correct programme context and can make separate consent choices.
 - [ ] Partner roles are programme-scoped, auditable and denied individual homeowner data by default.
 - [ ] A partner can view decision-ready, thresholded aggregate programme evidence only.
 - [ ] The insurer reference pack runs on the shared core without an insurer-specific fork.
@@ -73,3 +73,9 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - Changed: completed and merged HT-329, providing shared operator-controlled partner, programme, campaign, cohort and lifecycle administration for insurer, mortgage-provider, home-developer and other B2B client types.
 - Verification: backend PR #5 merged as `06efd28c8acab65a882d6877063c935c2f573d85`; frontend PR #3 merged as `86c9338429a37ccf5b45bf1fe2d507c8d689227f`; both clean `main` worktrees were fast-forwarded and verified against `origin/main`.
 - Notes: HT-328 remains open. HT-330 is the next planned functional workstream and must build programme-aware acquisition and consent on the shared HT-329 lifecycle rather than introducing a vertical-specific path.
+
+### 2026-08-03 — HT-330
+- Repo: backend, frontend, docs, tickets
+- Changed: completed and merged the reusable programme-aware acquisition and consent journey for insurer, mortgage-provider, home-developer and other-B2B programmes, including approved co-branding, separate consent choices, public-response privacy and aggregate attribution.
+- Verification: backend PR #6 merged as `4fc46ee1ddbd8843be0540d039c007d82db9dd8f`; frontend PR #4 merged as `52352e7ec5bd6575da1e58f2f794321d335595a2`; both clean authoritative `main` worktrees were fast-forwarded and verified against `origin/main`.
+- Notes: HT-328 remains open. HT-332 is next because HT-331 depends on governed partner roles and programme-scoped authorization before its dashboard can be exposed safely.

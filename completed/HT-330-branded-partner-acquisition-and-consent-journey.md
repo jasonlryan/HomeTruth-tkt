@@ -81,7 +81,7 @@ Decision recorded 2026-08-03:
 
 ## Delivery Status
 
-Clear to merge as of 2026-08-03. The ticket remains open until both implementation PRs are merged and their merge commits are pulled into the authoritative backend and frontend `main` worktrees.
+Complete as of 2026-08-03. Both implementation PRs are merged, and their exact merge commits are present in clean authoritative backend and frontend `main` worktrees matching `origin/main`.
 
 - Backend: [HomeTruth-be PR #6](https://github.com/jasonlryan/HomeTruth-be/pull/6)
   - base: `06efd28c8acab65a882d6877063c935c2f573d85`
@@ -93,6 +93,14 @@ Clear to merge as of 2026-08-03. The ticket remains open until both implementati
   - head: `ccbf484ee5f240e6c357fdf3cb7baa50378a0d06`
   - ready, mergeable and `CLEAN`
   - GitGuardian Security Checks passed
+
+## Post-Merge Verification
+
+- Backend PR #6 merged into `main` as `4fc46ee1ddbd8843be0540d039c007d82db9dd8f` on 2026-08-03.
+- Frontend PR #4 merged into `main` as `52352e7ec5bd6575da1e58f2f794321d335595a2` on 2026-08-03.
+- The authoritative backend `main` worktree was fast-forwarded to `4fc46ee1ddbd8843be0540d039c007d82db9dd8f`; the merge commit is present, the worktree is clean and `HEAD` equals `origin/main`.
+- The authoritative frontend `main` worktree was fast-forwarded to `52352e7ec5bd6575da1e58f2f794321d335595a2`; the merge commit is present, the worktree is clean and `HEAD` equals `origin/main`.
+- HT-330 is complete. Target-environment migration, deployment and browser validation remain launch work and are not claimed here.
 
 ## Implementation Log
 
