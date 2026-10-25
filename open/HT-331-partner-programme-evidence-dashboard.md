@@ -120,3 +120,10 @@ HT-332 merged in backend PR #7 and frontend PR #5. Build from those merged main 
 - PRs remain unmerged; HT-331 remains open pending integration.
 - HT-324 product/pilot interpretation and privacy approval, HT-319 governance and HT-320 target-environment rehearsal remain outstanding. No production programme was enabled.
 - Threshold policy, repeated-download disclosure risks and the intentionally different monthly engagement denominators require approval before external sharing.
+
+## Final Gate — 2026-10-25
+
+- Backend head `5786bbaefa8997a038b8561446877771c5f11944`; frontend head `dd2aaad2186db6d7fc00dfc84296989721c99eb9`. Both feature worktrees clean and fully pushed; current main bases unchanged from the SHAs above.
+- Final backend syntax, evidence/access database smoke and five contract/compatibility verifiers passed. Final frontend 4 applicable suites / 16 tests, changed-file lint, build and diff checks passed. The baseline App.test.js failure remains explicitly documented.
+- Both PRs stayed draft through review/fixes and were made ready once after the final local gate. Post-transition GitHub inspection: both OPEN, non-draft, MERGEABLE and CLEAN; GitGuardian SUCCESS at the exact heads; no review threads or change requests. No additional CI run was listed; security checks are not a claim of remote functional CI coverage.
+- Ready for review; not merged or deployed. No unresolved actionable feature finding remains from the repeated local review. HT-331 stays open pending integration; existing full-suite baseline failure and target-environment/product/privacy limitations remain visible.
