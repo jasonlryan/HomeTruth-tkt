@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs / tickets
 **Milestone:** B2B2C partner-programme foundation
 **Created:** 2026-08-02
-**Updated:** 2026-08-03
+**Updated:** 2026-10-25
 
 ## Goal
 
@@ -47,7 +47,7 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - [x] Functional workstreams are ticketed and sequenced.
 - [x] A partner programme can be configured, activated, paused and closed without a code change for each client.
 - [x] An invited homeowner receives the correct programme context and can make separate consent choices.
-- [ ] Partner roles are programme-scoped, auditable and denied individual homeowner data by default.
+- [x] Partner roles are programme-scoped, auditable and denied individual homeowner data by default.
 - [ ] A partner can view decision-ready, thresholded aggregate programme evidence only.
 - [ ] The insurer reference pack runs on the shared core without an insurer-specific fork.
 - [ ] Mortgage-provider and home-developer requirements can be expressed as configuration or vertical-pack extensions without changing the shared access model.
@@ -79,3 +79,9 @@ Build a shared partner-programme core around the existing partner, cohort and co
 - Changed: completed and merged the reusable programme-aware acquisition and consent journey for insurer, mortgage-provider, home-developer and other-B2B programmes, including approved co-branding, separate consent choices, public-response privacy and aggregate attribution.
 - Verification: backend PR #6 merged as `4fc46ee1ddbd8843be0540d039c007d82db9dd8f`; frontend PR #4 merged as `52352e7ec5bd6575da1e58f2f794321d335595a2`; both clean authoritative `main` worktrees were fast-forwarded and verified against `origin/main`.
 - Notes: HT-328 remains open. HT-332 is next because HT-331 depends on governed partner roles and programme-scoped authorization before its dashboard can be exposed safely.
+
+### 2026-10-25 — HT-332
+
+- Governed partner access and audit controls merged: backend PR #7 (`b848518d3cb0bbb4fbe165656c09a07f093ec7ac`), frontend PR #5 (`707e18fbf67f3ea68209820bf4a8622c77494b34`).
+- Unchanged reviewed heads and successful checks verified against GitHub before merge; implementation main worktrees fast-forwarded, preserving unrelated frontend asset deletions.
+- HT-331 is next. HT-328 remains open; no production-readiness claim is made.

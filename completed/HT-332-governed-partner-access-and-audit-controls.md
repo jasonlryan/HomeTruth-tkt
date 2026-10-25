@@ -4,7 +4,7 @@
 **Repo:** backend / frontend / docs
 **Milestone:** B2B2C partner-programme foundation
 **Created:** 2026-08-02
-**Updated:** 2026-08-03
+**Updated:** 2026-10-25
 
 ## Goal
 
@@ -130,3 +130,12 @@ Both complete `main...feature/ht-332-governed-partner-access` diffs were reviewe
 - Both PR descriptions were updated to match the final implementation, review fixes, exact-head checks and scope boundaries.
 - Clear-to-merge conclusion: both implementation PRs are locally and remotely clear to merge at the recorded heads.
 - Target-environment migration, deployment and smoke have not been run. This is a deployment-stage gap, not a local clear-to-merge claim.
+
+## Post-Merge Verification — 2026-10-25
+
+- Backend PR #7 merged as `b848518d3cb0bbb4fbe165656c09a07f093ec7ac`.
+- Frontend PR #5 merged as `707e18fbf67f3ea68209820bf4a8622c77494b34`.
+- GitHub confirmed unchanged reviewed heads, current main bases, CLEAN mergeability, successful GitGuardian checks and no review threads or change requests before merge.
+- Both authoritative main worktrees were fast-forwarded to the merge commits. Existing unrelated frontend asset deletions were preserved.
+- Implementation is complete. Deployment, target-environment migrations and smoke remain launch work.
+- HT-331 is the next functional workstream. HT-320 remains no-go.
