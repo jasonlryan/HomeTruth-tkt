@@ -38,3 +38,9 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 
 - `3ec5642`: `npm run start:branch-preview` makes port 3012 open the question preview from its root. Buying, Improving and Selling keep their official 24px icons above the labels. Verified all three routes and icon alignment at 390, 760 and 1440px.
 - `878a89b`: signed-in Ask HomeTruth reserves room for the opening at Send, moves the pane only if needed and leaves scroll under user control as the answer grows. **Jump to latest** is available above the composer when there is more to read. Browser checks covered first and follow-up questions, manual interruption, keyboard focus and reduced motion using local reply fixtures. All 33 frontend tests and the strict build passed.
+
+## 18 November 2026 — official icons in the app
+
+- `606e72b` replaces Lucide and Material Symbols UI glyphs and the remaining inline control icons with the HomeTruth design system. The app loads the same 166-symbol SVG sprite as the catalogue. Kept accessible names for icon-only controls and removed the external Material Symbols font request.
+- Browser checks confirmed SVG geometry actually rendered in Property profile, Vault, the document workspace, Ask HomeTruth and Admin, including the mobile property screen and keyboard document close. All 33 tests and the strict build passed.
+- The remaining design-system workstream covers page typography, layouts, component states and the complete evidence-to-next-action flow.
