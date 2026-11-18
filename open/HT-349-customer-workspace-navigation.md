@@ -50,3 +50,8 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - `08a1d5f` adds HT-FLOW-002 Buying, HT-FLOW-003 Improving and HT-FLOW-004 Selling, version 0.1. The localhost Admin UX specifications page exposes each with a stable URL and versioned download. Verified the links, downloads, direct navigation and mobile layout.
 - `8ffa512` adds an event-led Control centre proposal at `http://localhost:3012/workspace-preview`. Upcoming shows a sample booked boiler service. Needs attention shows a sample stale connection and saved follow-ups. Surveys are reviewed in Vault. Manuals open from the appliance, and connection access is explained in the connection view.
 - Browser-checked the survey → passage → editable follow-up → Control centre → passage round trip, the appliance and connection handoffs, mobile layout and the absence of API traffic. The proposal uses sample data and leaves the underlying records, permissions and connection setup for review.
+
+## 18 November 2026 — draft PR
+
+- [Frontend PR #13](https://github.com/jasonlryan/HomeTruth-fe/pull/13) tracks the homepage and signed-in work, including the design-system rollout. Head at opening was `8ffa512`, targeting `main`.
+- Keep the PR in draft while the signed-in rollout and final review are in progress. Use a merge commit so individual job commits remain in history.
