@@ -1,6 +1,6 @@
 # HT-345: Homeowner demo workspace for 19 November
 
-**Status:** In progress
+**Status:** Complete
 **Priority:** P0
 **Repo:** HomeTruth-fe
 
@@ -27,17 +27,16 @@ History ingestion/migrations, payment verification, production deployment, exter
 ## User scope updates
 - Full product/operator scope is required for tomorrow. Add an Operations presentation workspace (overview, home records, knowledge, programmes, connections, content) using local synthetic fixtures only, with no real admin API calls or role elevation.
 - Do not differentiate Mock and Vision in user-facing labels; use natural product language. Presenter inventory records implementation boundaries privately. This overrides the initial explicit fixture-badge criterion.
-- Local gate: focused/utility suites 22 tests pass. Full-suite obsolete App.test.js fails resolving react-router-dom on both clean main and feature; it still expects the removed Learn React boilerplate. Two existing unused-variable lint warnings cause CI=true build failure; normal production build succeeds. No unrelated lint/test cleanup introduced.
+- Final user authorisation: review repeatedly, align styling, merge frontend PR #10, pull main, rehearse homeowner and Operations on main, and leave the local demo running.
 
 ## Final verification — 18 November 2026
-- Frontend PR: https://github.com/jasonlryan/HomeTruth-fe/pull/10
-- Base: 707e18fbf67f3ea68209820bf4a8622c77494b34; head: 75a491f203af82e67c9c2680d17dd418dddc7827.
-- Feature root HT_Frontend-ht335; clean base review root HT_Frontend-review-main. All code changes and review fixes stayed on feature/ht-345-homeowner-demo-workspace.
-- Full diff/callers reviewed from main. Fixed nested interactive controls, focus traversal through hidden/inactive controls, JSON-vs-binary preview contract, and selection URL/refresh behaviour. No remaining actionable findings in changed scope.
-- 6 suites / 23 tests pass (all feature and existing utility suites). Old App.test.js failure independently reproduced on clean main; normal production build passes with two unchanged unused-variable warnings. CI=true build treats those baseline warnings as errors; not claimed as a pass.
-- Browser: authenticated home/history/source links; survey text preview; new document Q&A response with source limits; Preview/Chat retention; Escape/close; quotation and invoice deep-links; invoice URL retained after refresh.
-- Browser: property-context quote/invoice answer retains proposed versus recorded work, £360 amount, payment unknown and internal assessment unknown. New answer saved; compact card > full View > refresh persist verified.
-- Browser Operations: overview, search/filter/view records, knowledge review, programme name/review/invitation, preference save, content panels. Desktop and 390px screenshots inspected; no Mock/Vision badges added.
-- Presentation fixture scope: opt-in local env flag, synthetic Maya account and exact fictional home for history. Operations makes no real admin API calls and changes no roles. Actual admin routes remain protected.
-- Inventory: workspace .local-runtime/investor-demo/target-inventory.txt. Screenshots: output/playwright/ht345-*.
-- Local frontend port 3000 is supervised on this feature head; API main 0e09690; December reference port 3001 unchanged. No production deployment or merge performed.
+- Frontend PR https://github.com/jasonlryan/HomeTruth-fe/pull/10 merged at 15:50 UTC; main 8b791be2b020a185d273ff7bb49eaa21b1187164. Backend main 0e0969035eb4c8afae1f2a014ea3d605038f7fb0.
+- Repeated clean-main diff/caller review, with fixes on feature/ht-345-homeowner-demo-workspace only. Final reviewed feature head a3b57513561ebdbecfff3b583425b9741422c289.
+- Fixed source preview contract, focus handling, independent authorised deep-link lookup, shared brand colours and contrast, page-title alignment, keyboard sidebar controls, and responsive cards/workspace. No remaining actionable findings in reviewed scope.
+- Merged main: full CI=true test command passes 8 suites / 26 tests with no exclusions; CI=true production build succeeds. Removed obsolete starter test, added relevant deep-link/sidebar tests, removed unreachable unused handlers that blocked lint.
+- Fresh browser rehearsal on merged main: sign-in, home history, all three source links, survey Preview/Chat and fresh source-limited answer, quote/invoice deep links and refresh selection, fresh property comparison, save answer, compact note/full View and persistence after reload.
+- Comparison retains proposed versus recorded work, GBP 360, payment unknown, internal damp unassessed and staining cause unestablished.
+- Operations on merged main: Overview; Home records search/view/links; Knowledge review; Programmes review and invitation preview; Connections choice/save; Content review. Desktop and 390px layouts visually inspected.
+- Local frontend supervised from HT_Frontend-staging main at http://localhost:3000/property-profile; Operations http://localhost:3000/operations; December reference remains port 3001. API 8005 and Qdrant 6333 listening. Sleep inhibitor active for tomorrow; keep Mac powered, plugged in and lid open.
+- Inventory: /Users/jasonryan/Developer/HomeTruth/.local-runtime/investor-demo/target-inventory.txt. Screenshots: /Users/jasonryan/Developer/HomeTruth/output/playwright/ht345-*.
+- Existing admin role boundaries preserved. No production deployment or external outreach. Product UI uses natural labels; private inventory records fixture and integration limits.
