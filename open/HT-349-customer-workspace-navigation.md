@@ -13,7 +13,7 @@ Help customers go from a question or task to a useful, evidence-linked home reco
 - [x] **Version the three user flows.** Specify Buying (viewing checklist, survey evidence, follow-up, buyer-to-owner continuity), Improving (job scope, quote comparison, budget, invoice and warranty), and Selling (paperwork checklist, documented work, review and selective sharing). Specify first useful results, what is saved, return points, and the ontology and permissions at each step. Make help available from each task and preserve its context when signing in.
 - [ ] **Design the Control centre.** Reuse the existing Property profile, work history, facts and next actions. Let people resume their current task before setup and see what needs attention for a selected home after setup. Keep property details inside the home record. Validate a survey finding → source passage → follow-up → home record journey first.
 - [ ] **Design multiple-property context.** Define how to add and switch homes, confirm the relationship per property, and apply the selection to Vault, Notebooks, Tools and Ask HomeTruth. A buyer and owner relationship can coexist for different properties. Verify cross-property and cross-user isolation before shipping.
-- [ ] **Rework Admin navigation.** Use the clear Admin grouping from the port 3001 reference. Give Knowledge ingestion and source review, Reporting, Partner programmes, Content, Product resources and sensitive Data access explicit destinations. Keep the shared sign-in. Verify permissions for each destination, including direct URLs and exports. The demo Data Room uses fabricated records.
+- [x] **Rework Admin navigation.** Use the clear Admin grouping from the port 3001 reference. Give Knowledge ingestion and source review, Reporting, Partner programmes, Content, Product resources and sensitive Data access explicit destinations. Keep the shared sign-in. Verify permissions for each destination, including direct URLs and exports. The demo Data Room uses fabricated records.
 - [ ] **Apply the design system through real flows.** Start with the signed-in shell, then Home record → Vault → evidence → next action. Use the current typography, HT icons, first-line alignment and shared hover, selected, focus, inactive, loading, empty and error states. Extend that reference to Notebooks, Tools, Settings and Admin.
 
 ## Boundaries
@@ -55,3 +55,9 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 
 - [Frontend PR #13](https://github.com/jasonlryan/HomeTruth-fe/pull/13) tracks the homepage and signed-in work, including the design-system rollout. Head at opening was `8ffa512`, targeting `main`.
 - Keep the PR in draft while the signed-in rollout and final review are in progress. Use a merge commit so individual job commits remain in history.
+
+## 18 November 2026 — Admin workspace in PR #13
+
+- `567fb1b` adds an Admin overview and shared menu with distinct destinations for Knowledge, Reporting, Partner programmes, Content, Product resources and Data access. Existing URLs use one protected route tree. Knowledge retains source ingestion, library and indexing controls.
+- Browser checks covered all seven direct routes for signed-out visitors, customers and admins, the selected state, the mobile overview, a keyboard navigation action and a synthetic CSV download. The local backend returned HTTP 401 for an unsigned export request and 403 for the customer test account. The strict production build and all 33 tests passed.
+- No new privileges were introduced. The broader design-system rollout remains in progress in draft PR #13.
