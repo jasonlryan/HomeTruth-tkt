@@ -33,3 +33,8 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - The signed-in navigation uses the HT icon suite and the catalogue and Claude pack carry the updated shared homepage copy.
 - Browser checks at 1440 and 390px covered the public links, Tools sign-in gate, navigation destinations and selected states, mobile drawer, icon assets and admin visibility. All 33 frontend tests and the strict production build passed. Existing Sidebar test fixtures emit React `act` warnings.
 - Next workstream for review: version the three customer journeys and show the buying survey-to-follow-up sequence in the Control centre proposal. Feature code is local for review.
+
+## 18 November 2026 — feature preview and conversation follow-up
+
+- `3ec5642`: `npm run start:branch-preview` makes port 3012 open the question preview from its root. Buying, Improving and Selling keep their official 24px icons above the labels. Verified all three routes and icon alignment at 390, 760 and 1440px.
+- `878a89b`: signed-in Ask HomeTruth reserves room for the opening at Send, moves the pane only if needed and leaves scroll under user control as the answer grows. **Jump to latest** is available above the composer when there is more to read. Browser checks covered first and follow-up questions, manual interruption, keyboard focus and reduced motion using local reply fixtures. All 33 frontend tests and the strict build passed.
