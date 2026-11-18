@@ -50,3 +50,13 @@ auth changes or embedded real-account credentials. Verify disabled gate,
 authentication errors, fresh browser entry and full tests/build before PR review.
 
 Direct entry follow-up: PR https://github.com/jasonlryan/HomeTruth-fe/pull/11 merged; main e7a6ed5. 30 tests pass, strict CI build passes. Reviewed diff and surrounding auth/routes from main; no remaining actionable findings. Edits only on feature/ht-345-direct-demo-entry. Fresh-session homeowner and Operations entry verified; main local service restored. Links /demo and /demo?to=operations, plus local landing/login buttons. No credential entry needed.
+
+## Follow-up: responsive navigation and icon alignment
+Status: complete. Scope: persistent collapsible left navigation, official
+HT logo mark, distinct consistent navigation icons and accessible labels.
+Collapsed rail at narrow widths; expand/collapse at desktop; all settings
+routes remain available. No whole-site icon migration in this change.
+Acceptance: navigation never disappears, active page readable, keyboard and
+mobile navigation verified, token styling, tests/build and PR review pass.
+
+Responsive navigation PR https://github.com/jasonlryan/HomeTruth-fe/pull/12 merged; main 976f33a. Final head 679248b. Full 33 tests and strict CI build pass; GitGuardian passed. Repeated diff/caller review from main fixed drawer focus traversal and backdrop focus restoration; no remaining actionable findings. Browser inspected at 390px/1440px and 800px on merged main. Official HT mark/lockup from design-system assets; one consistent 24px outline navigation family. Persistent rail, mobile drawer, labels, active state, Settings, Escape and keyboard behaviour verified. Main service left supervised on port 3000. Whole-site icons remain a mix of Lucide/Material Symbols/HT motifs; no complete global icon migration claimed.
