@@ -40,3 +40,13 @@ History ingestion/migrations, payment verification, production deployment, exter
 - Local frontend supervised from HT_Frontend-staging main at http://localhost:3000/property-profile; Operations http://localhost:3000/operations; December reference remains port 3001. API 8005 and Qdrant 6333 listening. Sleep inhibitor active for tomorrow; keep Mac powered, plugged in and lid open.
 - Inventory: /Users/jasonryan/Developer/HomeTruth/.local-runtime/investor-demo/target-inventory.txt. Screenshots: /Users/jasonryan/Developer/HomeTruth/output/playwright/ht345-*.
 - Existing admin role boundaries preserved. No production deployment or external outreach. Product UI uses natural labels; private inventory records fixture and integration limits.
+
+## Follow-up: direct local entry
+Status: complete. User requests opening demo without entering credentials.
+Scope: localhost-only opt-in /demo entry using normal backend authentication
+for the synthetic Maya account; homeowner/Operations destinations; visible
+entry links on local landing and login screens. No admin bypass, production
+auth changes or embedded real-account credentials. Verify disabled gate,
+authentication errors, fresh browser entry and full tests/build before PR review.
+
+Direct entry follow-up: PR https://github.com/jasonlryan/HomeTruth-fe/pull/11 merged; main e7a6ed5. 30 tests pass, strict CI build passes. Reviewed diff and surrounding auth/routes from main; no remaining actionable findings. Edits only on feature/ht-345-direct-demo-entry. Fresh-session homeowner and Operations entry verified; main local service restored. Links /demo and /demo?to=operations, plus local landing/login buttons. No credential entry needed.
