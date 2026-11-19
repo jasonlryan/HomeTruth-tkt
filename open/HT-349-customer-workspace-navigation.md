@@ -68,3 +68,9 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - The signed-in workspace uses the shared typography, icons and component states. Vault supports keyboard upload and filters, and a customer can return from an evidence preview to the correct home record and its next actions. The first homepage answer remains available after sign-in and refresh. The Admin design reference and versioned blueprints are included in the build.
 - All 37 frontend tests, the strict build from tracked files, GitGuardian and browser checks passed. The browser pass used local fixtures for the routes that require data and sign-in.
 - HT-349 remains open for persistent Control centre workflows and multiple-home context.
+
+## 19 November 2026 — selected-home Control centre
+
+- Implement the signed-in overview on a separate feature branch. Read homes available through Property Person and group open Reminder / Task records into future dates, overdue items and undated follow-ups.
+- Use existing property-task permissions and persistence. Customer-entered follow-ups and existing service or document date reminders are in scope. Calendar booking, recurring events, appliance connections and a site-wide home selector are follow-on work.
+- Verify persistence, completion, retry, read and write permissions, home switching, source navigation and desktop and mobile layout.
