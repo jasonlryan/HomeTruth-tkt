@@ -27,7 +27,9 @@ Guaranteed platform approvals, multi-platform availability by inference, scheme 
 
 - [ ] Named pilot owner, payer, participant consent and success thresholds.
 - [ ] First platform answers the agreed task with sources and unknowns.
-- [ ] Revocation and second-user denial pass end to end.
+- [ ] Revocation and second-user denial pass end to end. Subsequent tool and evidence-link requests fail after revocation despite an otherwise valid token.
+- [ ] While the token is valid and the grant is active and unexpired, remove the granting user's access to Home A. Repeating the formerly successful tool read and evidence request must fail. Restore access only through the normal authorised flow; separately test loss of document access.
+- [ ] Consent explains that HomeTruth can deny future reads but cannot retract information already exported to the provider.
 - [ ] Each later platform has a separate compatibility and release decision.
 - [ ] Website availability changes only after recorded deployment and approval evidence.
 

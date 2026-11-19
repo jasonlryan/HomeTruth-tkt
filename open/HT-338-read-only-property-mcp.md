@@ -29,6 +29,7 @@ Writes, booking, payments, scheduled monitoring and invented property facts or d
 - [ ] Tool schemas, limits, sources and errors are documented.
 - [ ] Documents cannot override instructions or permissions.
 - [ ] Permissioned evidence links and unavailable/unknown states work.
+- [ ] A valid token and active grant cannot retrieve property data or evidence after the granting user's underlying property or document access is removed. Repeat the same read and evidence-link request to prove denial.
 
 ## Required Verification
 
@@ -42,7 +43,7 @@ HT-335 plan: `hometruth DOCS/docs/product/personal-agent-opda-delivery-plan.md`.
 
 **Reuse.** Read dated tasks and facts from `property_tasks` and `property_facts`. Resolve citations through `property_documents` and `evidence_sources`.
 
-**Missing or required.** The local schema has no dedicated maintenance-event or compliance record. Report missing dates as unknown. Each fact currently references one evidence source. A claim reconciled across several documents needs a way to retain all supporting sources.
+**Missing or required.** The local schema has no dedicated maintenance-event or compliance record. Report missing dates as unknown. Each fact currently references one evidence source. An answer may cite several existing documents without persisting a new property fact. Persisting one reconciled fact supported by several sources requires a fact-to-evidence association that retains every supporting source.
 
 **Decision needed.** Which dated records support the first pilot answer? Do we need multi-source claims or a dedicated event model for that pilot?
 

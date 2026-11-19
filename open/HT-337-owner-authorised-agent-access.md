@@ -28,7 +28,9 @@ Partner access to individual data by default, shared admin keys, automatic certi
 - [ ] Approved contract names the identity provider, grant model and target clients.
 - [ ] Server enforces current property and document permissions on every call.
 - [ ] Revoked/expired grants and cross-user/property access fail closed.
-- [ ] Consent explains selected sharing and the limits of revoking exported data.
+- [ ] Consent explains selected sharing and that revocation blocks subsequent HomeTruth reads but cannot withdraw information already exported to a recipient.
+- [ ] With a valid token and an active, unexpired grant, removing the granting user's property relationship or document permission denies subsequent tool reads and evidence retrieval. Cached authorisation must not bypass current permission checks.
+- [ ] Revoking the grant denies subsequent tool reads and evidence-link requests even while the token remains valid.
 
 ## Required Verification
 
@@ -42,7 +44,7 @@ HT-335 plan: `hometruth DOCS/docs/product/personal-agent-opda-delivery-plan.md`.
 
 **Reuse.** Use `users`, `properties` and the active `property_people` relationship to identify who can access the home.
 
-**Missing or required.** A revocable grant must link the granting person, external client, home, purpose, permitted reads and evidence, expiry and revocation. Check the grant and current property and document permissions on every read. Record the grant, operation, time and outcome for access review.
+**Missing or required.** Authenticate the external client through the agreed OAuth discovery/PKCE flow and verify token claims. The central missing authorisation record is a revocable grant, which must link the granting person, external client, home, purpose, permitted reads and evidence, expiry and revocation. Check the grant and current property and document permissions on every read. Record the grant, operation, time and outcome for access review.
 
 **Decision needed.** Which roles may delegate, which sources may leave HomeTruth, how long can a grant last, and how long should access records be kept?
 

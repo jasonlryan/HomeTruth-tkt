@@ -22,7 +22,7 @@ No provider session history or cross-home shared memory.
 
 - [ ] Expired and legacy reviews follow the agreed policy.
 - [ ] Expiry preserves saved manuals.
-- [ ] Access loss, source deletion and changed identity prevent stale reads and confirmation.
+- [ ] Access loss, source deletion and changed identity prevent stale reads and confirmation. Remove the initiating user’s property access while a review is unexpired, then verify both result retrieval and confirmation fail.
 - [ ] Sensitive prompts and documents stay out of logs.
 
 ## Verification
