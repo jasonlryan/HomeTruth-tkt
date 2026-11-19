@@ -1,6 +1,6 @@
 # HT-349 · Customer workspace and navigation upgrades
 
-**Status:** Open · first implementation on `feature/ht-348-homepage-components`
+**Status:** Open · initial frontend rollout merged in PR #13
 **Related:** HT-348 (shared homepage journey), HT-340 (intent-based onboarding), HT-345 (homeowner demo workspace)
 
 ## Objective
@@ -14,7 +14,7 @@ Help customers go from a question or task to a useful, evidence-linked home reco
 - [ ] **Design the Control centre.** Reuse the existing Property profile, work history, facts and next actions. Let people resume their current task before setup and see what needs attention for a selected home after setup. Keep property details inside the home record. Validate a survey finding → source passage → follow-up → home record journey first.
 - [ ] **Design multiple-property context.** Define how to add and switch homes, confirm the relationship per property, and apply the selection to Vault, Notebooks, Tools and Ask HomeTruth. A buyer and owner relationship can coexist for different properties. Verify cross-property and cross-user isolation before shipping.
 - [x] **Rework Admin navigation.** Use the clear Admin grouping from the port 3001 reference. Give Knowledge ingestion and source review, Reporting, Partner programmes, Content, Product resources and sensitive Data access explicit destinations. Keep the shared sign-in. Verify permissions for each destination, including direct URLs and exports. The demo Data Room uses fabricated records.
-- [ ] **Apply the design system through real flows.** Start with the signed-in shell, then Home record → Vault → evidence → next action. Use the current typography, HT icons, first-line alignment and shared hover, selected, focus, inactive, loading, empty and error states. Extend that reference to Notebooks, Tools, Settings and Admin.
+- [x] **Apply the design system through real flows.** Start with the signed-in shell, then Home record → Vault → evidence → next action. Use the current typography, HT icons, first-line alignment and shared hover, selected, focus, inactive, loading, empty and error states. Extend that reference to Notebooks, Tools, Settings and Admin.
 
 ## Boundaries
 
@@ -61,3 +61,10 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - `567fb1b` adds an Admin overview and shared menu with distinct destinations for Knowledge, Reporting, Partner programmes, Content, Product resources and Data access. Existing URLs use one protected route tree. Knowledge retains source ingestion, library and indexing controls.
 - Browser checks covered all seven direct routes for signed-out visitors, customers and admins, the selected state, the mobile overview, a keyboard navigation action and a synthetic CSV download. The local backend returned HTTP 401 for an unsigned export request and 403 for the customer test account. The strict production build and all 33 tests passed.
 - No new privileges were introduced. The broader design-system rollout remains in progress in draft PR #13.
+
+## 19 November 2026 — frontend rollout merged
+
+- [Frontend PR #13](https://github.com/jasonlryan/HomeTruth-fe/pull/13) merged as `aa063c7`, preserving the feature commits, and the local frontend main checkout is up to date.
+- The signed-in workspace uses the shared typography, icons and component states. Vault supports keyboard upload and filters, and a customer can return from an evidence preview to the correct home record and its next actions. The first homepage answer remains available after sign-in and refresh. The Admin design reference and versioned blueprints are included in the build.
+- All 37 frontend tests, the strict build from tracked files, GitGuardian and browser checks passed. The browser pass used local fixtures for the routes that require data and sign-in.
+- HT-349 remains open for persistent Control centre workflows and multiple-home context.
