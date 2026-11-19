@@ -94,3 +94,7 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - Separate frontend branch. Enable the existing Buying, Improving and Selling chooser on the staging root. Each route has four questions and a custom query using Ask HomeTruth.
 - Give Start a home record a live public destination with sign-in and registration handoff to Property profile. A guest answer can be reopened once claimed by the signed-in account. Preserve the no-answer and returning customer entry paths.
 - Verify the root, responsive chooser, all prompt routes, custom question, setup, first answer across sign-in and refresh, and normal production build defaults. No production release in this slice.
+
+- Implemented at `abafa31` on `feature/ht-349-homepage-questions`. The staging build enables the chooser at `/`. [Frontend draft PR #16](https://github.com/jasonlryan/HomeTruth-fe/pull/16), localhost review at http://localhost:3014/.
+- Verified 38 frontend tests, both compiled builds, all chooser routes, custom question transport, and a real first answer surviving setup, sign-in and refresh. The compiled production homepage keeps its existing composer.
+- Improving includes “Can you find the manual for my washing machine?” Its stable action ID `find_appliance_manual` opens the labelled `/find-my-manual` sample and resumes the same sample after sign-in. The live picker and manual review remain in [frontend #9](https://github.com/jasonlryan/HomeTruth-fe/pull/9), with pilot runtime and controls in backend #11 and #14.
