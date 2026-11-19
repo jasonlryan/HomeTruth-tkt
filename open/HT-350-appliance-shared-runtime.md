@@ -28,3 +28,7 @@ Durable revision metadata, usage controls and expiry follow in HT-351 and HT-352
 ## Verification
 
 Run offline appliance and dispatcher regressions including normal route wiring, denial, replay, malformed input and interrupted completion. Review the incremental diff against HT-341.
+
+## Implementation log
+
+19 November 2026. [Backend PR #11](https://github.com/jasonlryan/HomeTruth-be/pull/11) is ready for review against the HT-341 branch at b0805e7. Reviewed and pushed head aa64419. The local route smoke check, 27 offline tests and the isolated MySQL concurrency/persistence suite passed. Concurrent identical invocations made one provider-fixture call. The recovered-run regression rejects a late completion. GitHub reports a clean merge state, zero review threads and a passing GitGuardian check. Application tests ran locally. The ticket remains open pending integration with HT-341.
