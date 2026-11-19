@@ -78,3 +78,9 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - Local review is available at http://localhost:3013/control-centre. Drafts are [frontend #15](https://github.com/jasonlryan/HomeTruth-fe/pull/15) at `d80b088` and [backend #13](https://github.com/jasonlryan/HomeTruth-be/pull/13) at `0f50342`.
 - Verified sign-in, signed-in navigation, real local MySQL save and completion across refresh, desktop and mobile layout, home switching, read-only permissions and denied cross-home access. Six groups of concurrent retries each produced one task and one status entry. All 38 frontend tests, the strict production build and existing backend tests passed.
 - The upcoming section displays recorded reminder dates. Confirmed bookings and direct passage capture for new follow-ups are still open.
+
+## Survey passage to follow-up
+
+- Select exact text on a page of a text-readable PDF in Vault. Save it with a follow-up against a selected home, then reopen the same passage from Control centre after refresh.
+- Use Property Document, Evidence Source and Reminder / Task. Recheck active document ownership and the property relationship at each return. Keep passage text out of URLs and workspace lists. If the source changes or is removed, leave the follow-up usable and explain why the passage is unavailable.
+- Verify the real round trip, PDF page and selection fidelity, repeat saves and denial after access loss. The public homepage prompt chooser is a separate release change.
