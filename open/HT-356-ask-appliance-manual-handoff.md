@@ -34,3 +34,11 @@
 **Ownership:** The Ask-side implementation recognises and renders the shared action. Chat 4 owns the local picker, existing-evidence resolution, confirmed lookup and save flow. Verify the shared handoff together. Chat 4 verifies indexing, cited answers and the warranty side check end to end against HT-341 services.
 
 **Delivery dependencies:** HT-349 chooser, HT-341 appliance record/import, HT-350 dispatcher and HT-351 admission. Coordinate pilot release evidence with HT-354. Issue-specific videos are a separate enhancement in [HT-357](HT-357-appliance-troubleshooting-videos.md).
+
+## Gated backend integration, 19 November 2026
+
+Backend main `163f2a5ad1eafdcb9739d42347c994243d6add3f` includes the typed Ask action (#16), appliance records (#9), shared runtime (#11), GBP admission (#14), Vault reuse and manual suitability (#17), and Control centre follow-ups (#13). Chat 4 owns the frontend chooser, picker and demo assembly. Backend owns action recognition, evidence checks, admission and persistence. Homeowner usability acceptance by Jason/Monty remains open.
+
+The parallel demo API on 127.0.0.1:8016 enables HT_APPLIANCE_ITEMS_ENABLED, HT356_ASK_MANUAL_HANDOFF, APPLIANCE_AGENT_ENABLED and HT_CONTROL_CENTRE_FOLLOWUPS_ENABLED locally. These switches default off. The UK pilot allows one concurrent lookup per homeowner, a £1 daily allowance and a 20p reservation per lookup. Provider costs are recorded separately.
+
+Browser verification on the consolidated backend showed Kitchen opening authorised Vault document 26 with zero lookup requests. Utility resumed its existing review with zero lookup requests. A simulated fresh Utility lookup preserved the confirmed appliance across refresh, submitted one paid-lookup request after one confirmation, and required a separate decision to save. The fresh-path test intercepted provider and save responses. Isolated database tests covered duplicate requests and concurrent runs. Thirty-eight automated tests passed. The recorded Bosch specification sheet failed the suitability check and the operating manual passed. A new live provider lookup was outside this rehearsal.
