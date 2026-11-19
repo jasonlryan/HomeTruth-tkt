@@ -1,6 +1,6 @@
 # HT-301: Make the local-only environment explicit
 
-Status: Reviewed and clear to merge — 19 November 2026
+Status: Completed — merged and smoke-tested 19 November 2026
 
 ## Objective
 Remove obsolete previous-team deployment references and configure the current local setup. The owner confirmed that no staging or production environment exists.
@@ -41,3 +41,12 @@ Source/configuration scan, environment-selection checks, frontend tests/build, f
 - Tracked-file scan found no obsolete previous-team IPs, playground hosts or preview tunnel hosts in either feature head. Removed the last backend property-image tunnel fallback during review.
 - Active ignored frontend .env and .env.development.local now use port 3000 and API localhost:8005; retired .env_staging removed. Verified backend nonsecret endpoints already point locally. Credentials and database data were not changed; no migrations run.
 - Published environment-status.md and a delivery-playbook clarification directly to documentation main (06a254e). Historical HT-300 text now explains that previous-team hosts are retired. Local topology is frontend 3000, API 8005, MySQL 3306/hometruth and Qdrant 6333. No hosted staging or production exists.
+
+
+## Merge and local smoke test — 19 November 2026
+
+- Both PRs passed GitGuardian checks and were merged at the reviewed heads. Backend main: ddeb503a6ccac8bdfbc18f276551ebb62c4952f3; frontend main: 1652fc0b3f1559e2c00b8fa92fa210560028ec81.
+- Fast-forwarded the active local checkouts, preserving unrelated .gitignore and public/admin changes. Restarted backend 8005 and frontend 3000 from those checkouts. Frontend compiled successfully.
+- Authenticated browser opened the Vault invoice preview and retrieved the previously saved question and GBP 360.00 answer. Local property placeholder returned HTTP 200 and valid SVG content. Browser console: zero errors and warnings.
+- Read-only Sequelize status confirmed all 15 migrations applied; none pending. No migrations were run and no records or credentials were changed.
+- Full browser-extension login was not part of the quick smoke test. Hosting remains local only.
