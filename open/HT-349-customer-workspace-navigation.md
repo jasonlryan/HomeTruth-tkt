@@ -88,3 +88,9 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - Implemented in frontend draft #15 at `ea70169` and backend draft #13 at `420a464`. The localhost browser test selected text on page two, persisted the follow-up to the chosen home, then reopened exactly that text after both Control centre and Vault refresh. The checked sample remains available in the demo account.
 - 39 frontend tests, the strict production build and backend tests passed. Local MySQL checks covered duplicate retries, changed wording, denied access and cross-property isolation.
 - The four starter questions plus a custom question per route are implemented in `/homepage-preview`. Proposed public rollout is a separate homepage change. Reuse the chooser on the public entry in staging, wire Start a home record to the public destination, verify all three question routes and preservation of the first answer through sign-in, then switch the public home entry after review.
+
+## Five-question staging homepage
+
+- Separate frontend branch. Enable the existing Buying, Improving and Selling chooser on the staging root. Each route has four questions and a custom query using Ask HomeTruth.
+- Give Start a home record a live public destination with sign-in and registration handoff to Property profile. A guest answer can be reopened once claimed by the signed-in account. Preserve the no-answer and returning customer entry paths.
+- Verify the root, responsive chooser, all prompt routes, custom question, setup, first answer across sign-in and refresh, and normal production build defaults. No production release in this slice.
