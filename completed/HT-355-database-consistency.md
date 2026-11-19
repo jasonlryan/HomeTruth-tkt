@@ -48,3 +48,13 @@ Production deployment, ontology expansion, deleting conflicting records, unrelat
 - Backend PR #12 merged to main as 850316e5a2c406cf264f38e262f992a6af54b761.
 - Frontend PR #14 merged to main as 40e1068dfd56c144e89e88ecf897aa8ede59b6e5.
 - All code fixes were made on feature branches. Production rollout/migration and authenticated browser smoke testing remain outside the verified completion evidence. The local database migration and retained-data comparison passed earlier as recorded above.
+
+
+## Local browser smoke test — 19 November 2026
+
+- Tested the merged backend main at 850316e5a2c406cf264f38e262f992a6af54b761 and frontend main at 40e1068dfd56c144e89e88ecf897aa8ede59b6e5 against the real local MySQL database and API. This supersedes the earlier browser-testing gap; production remains unverified.
+- Authenticated dashboard, existing Ask HomeTruth conversations, Vault document previews and saved document questions loaded successfully.
+- Exercised document pagination using a browser request override reducing the real API page limit to two. Loading page two returned HTTP 200 and increased visible questions from two to four. Responses were not mocked; the override was then removed.
+- Switching from the survey to the invoice showed only the invoice history. Submitted one labelled local smoke-test question on repair-invoice.pdf; the answer correctly reported GBP 360.00 and unknown payment status. Closing and reopening the document retrieved the saved answer. This test question and answer remain in the fictional Maya Demo account.
+- Initial testing used the temporary frontend on 127.0.0.1:3018. Found an older HT-348 preview shadowing port 3000; stopped that preview and verified the normal app at http://localhost:3000/documents?preview=23, including the saved answer. Restarted the backend with the merged code. No application code fix was needed.
+- Browser console reported zero errors and zero warnings. Removed the temporary port-3018 preview and temporary authentication-state files; the normal local frontend and backend remain running.
