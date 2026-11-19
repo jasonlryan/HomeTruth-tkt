@@ -74,3 +74,7 @@ The first slice uses existing capabilities and preserves compatibility. New proj
 - Implement the signed-in overview on a separate feature branch. Read homes available through Property Person and group open Reminder / Task records into future dates, overdue items and undated follow-ups.
 - Use existing property-task permissions and persistence. Customer-entered follow-ups and existing service or document date reminders are in scope. Calendar booking, recurring events, appliance connections and a site-wide home selector are follow-on work.
 - Verify persistence, completion, retry, read and write permissions, home switching, source navigation and desktop and mobile layout.
+
+- Local review is available at http://localhost:3013/control-centre. Drafts are [frontend #15](https://github.com/jasonlryan/HomeTruth-fe/pull/15) at `d80b088` and [backend #13](https://github.com/jasonlryan/HomeTruth-be/pull/13) at `0f50342`.
+- Verified sign-in, signed-in navigation, real local MySQL save and completion across refresh, desktop and mobile layout, home switching, read-only permissions and denied cross-home access. Six groups of concurrent retries each produced one task and one status entry. All 38 frontend tests, the strict production build and existing backend tests passed.
+- The upcoming section displays recorded reminder dates. Confirmed bookings and direct passage capture for new follow-ups are still open.
