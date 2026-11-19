@@ -1,25 +1,27 @@
-# HT-301: Set up local .env files
+# HT-301: Make the local-only environment explicit
 
-**Priority:** P1
-**Repo:** both
-**Created:** 2026-03-29
-**Updated:** 2026-03-29
+Status: In progress — 19 November 2026
 
-## Description
+## Objective
+Remove obsolete previous-team deployment references and configure the current local setup. The owner confirmed that no staging or production environment exists.
 
-Create working .env for backend (local MySQL credentials, own OpenAI API key, skip SendGrid/Zoopla) and update frontend .env to point at localhost backend instead of staging IP.
+## Scope
+Local frontend/API settings, obsolete staging commands and environment selection, old CORS origins and UI URLs, tracked setup examples, and environment documentation. Preserve credentials and existing data.
 
-## Files
+## Out of scope
+Provisioning hosting, deployment, database migrations or resets, third-party API integrations, unrelated changes.
 
-- `HomeTruth_BE-staging/.env` — create from .env.template
-- `HT_Frontend-staging/.env` — update REACT_APP_API_BASE_URL
+## Workstreams
+- Backend: local environment loading and CORS; remove misleading staging commands and CLI aliases.
+- Frontend: localhost configuration, local property placeholder and extension login; remove staging commands.
+- Documentation: local topology, environment precedence and future deployment prerequisites.
 
-## Acceptance Criteria
+## Acceptance criteria
+- No obsolete previous-team deployment hosts in active source/configuration.
+- Local frontend uses localhost:3000 and API localhost:8005; MySQL remains 127.0.0.1:3306/hometruth.
+- Selecting unsupported staging/production database configuration cannot silently use the local database.
+- No database records, credentials or migrations are changed.
+- Both code changes pass relevant checks and feature-branch PR review; docs state that hosted environments do not exist.
 
-- [ ] Backend starts and connects to local MySQL
-- [ ] Frontend starts and connects to localhost backend
-- [ ] No references to team's staging IPs
-
-## Notes
-
-.env.template already created in Cowork folder. Backend auto-creates schema via sync({alter:true}). Seeders populate quiz data and admin user.
+## Verification
+Source/configuration scan, environment-selection checks, frontend tests/build, full PR diff review and remote check inspection. Historical ticket records are labelled as historical rather than treated as live infrastructure.

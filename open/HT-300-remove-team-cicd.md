@@ -20,4 +20,9 @@ Delete .github/workflows/main.yml from both repos. These are configured for the 
 
 ## Notes
 
-Backend workflow deploys to 3.141.227.135 (staging) and 3.149.116.163 (production). Frontend deploys to 3.141.227.135 and 18.223.231.19. None of these are ours.
+Historical ticket: the previous team's AWS staging/production addresses were
+not owner-managed environments. The old backend deploy workflow was removed.
+As confirmed on 19 November 2026, HomeTruth runs locally only; there is no current
+hosted staging or production environment. HT-301 removes remaining obsolete
+runtime references and documents local setup. Do not use historical workflows
+or old configuration as connection instructions.
