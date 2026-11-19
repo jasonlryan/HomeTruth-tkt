@@ -10,3 +10,5 @@ Verify that paginated records come from Qdrant, empty and unavailable states are
 - Frontend [PR 19](https://github.com/jasonlryan/HomeTruth-fe/pull/19), main 5ecf137, head 5e70564. All 45 tests and CI-mode production build passed. Chrome exercised Resources, its documentation link and the RAG inventory on the built feature head with a synthetic admin and API fixtures.
 - Backend [PR 18](https://github.com/jasonlryan/HomeTruth-be/pull/18), main 163f2a5, head c2b2a49. All 9 root tests passed. The feature service read two pages of 25 distinct points each from local shared Qdrant with no overlap.
 - Clean-main diff reviews complete. Both heads were mergeable with no review threads. Merge the backend first to make the inventory available to the frontend.
+
+Merged and verified on both main branches on 19 November 2026. Backend merge 370348f and frontend merge 5ea1721. GitGuardian passed on both reviewed heads and neither PR had unresolved review threads.
