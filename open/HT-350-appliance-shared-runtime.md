@@ -32,3 +32,13 @@ Run offline appliance and dispatcher regressions including normal route wiring, 
 ## Implementation log
 
 19 November 2026. [Backend PR #11](https://github.com/jasonlryan/HomeTruth-be/pull/11) is ready for review against the HT-341 branch at b0805e7. Reviewed and pushed head aa64419. The local route smoke check, 27 offline tests and the isolated MySQL concurrency/persistence suite passed. Concurrent identical invocations made one provider-fixture call. The recovered-run regression rejects a late completion. GitHub reports a clean merge state, zero review threads and a passing GitGuardian check. Application tests ran locally. The ticket remains open pending integration with HT-341.
+
+## HT-FLOW-005 database requirements
+
+**Reuse.** Keep specialist definitions, revisions, allowed operations and tools in the version-controlled SDK registry. Use the existing appliance service and `appliance_agent_runs` for manual lookup.
+
+**Missing or required.** Each invocation must be attributable to its operation and pinned revision. HT-351 owns durable run metadata.
+
+**Decision needed.** Which revision is approved for the appliance pilot, and who may enable or roll it back?
+
+This records planning requirements only. Connect your agent remains on the roadmap.

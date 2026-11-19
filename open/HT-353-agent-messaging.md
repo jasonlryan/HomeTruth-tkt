@@ -27,3 +27,13 @@ No broker, asynchronous mailbox, external agent connection or production child p
 ## Verification
 
 Exercise valid request/reply, concurrency, replay, expiry and failure using deterministic fixture agents. Inspect retained metadata after expiry.
+
+## HT-FLOW-005 database requirements
+
+**Reuse.** The manual lookup uses one specialist and its existing run.
+
+**Missing or required.** For a future delegated task, correlate root, parent and child runs and logical steps. Carry forward the authorised resource scope, deadline and remaining budget.
+
+**Decision needed.** Which homeowner task warrants two specialists? Defer production delegation until it is selected.
+
+This records planning requirements only. Connect your agent remains on the roadmap.

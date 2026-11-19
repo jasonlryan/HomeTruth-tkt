@@ -28,3 +28,13 @@ No provider session history or cross-home shared memory.
 ## Verification
 
 Use a controlled clock, migrated legacy records, deletion and cross-owner fixtures. Verify expiry retries and inspect persisted data and logs.
+
+## HT-FLOW-005 database requirements
+
+**Reuse.** Use the run for reviewable candidates, `home_items` for the appliance and `home_item_evidence` for the confirmed document association.
+
+**Missing or required.** Separate temporary review expiry from the confirmed manual’s document lifecycle. Recheck access before reading or importing a candidate. Expiring a review must preserve an already confirmed manual.
+
+**Decision needed.** Approve or revise the proposed 30-day review window and the treatment of legacy runs. External grant expiry is a separate HT-337 decision.
+
+This records planning requirements only. Connect your agent remains on the roadmap.

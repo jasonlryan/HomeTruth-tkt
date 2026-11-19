@@ -29,3 +29,13 @@ Retention and child messaging have separate tickets.
 ## Verification
 
 Exercise competing workers, revocation, failed writes, configured limits and revision rollback with a real database and a stub provider.
+
+## HT-FLOW-005 database requirements
+
+**Reuse.** Extend the existing `appliance_agent_runs` record and its request-key handling for the initial specialist.
+
+**Missing or required.** Bind a run to its initiating user, selected resource, operation, revision and input fingerprint. Retain state and usage so repeat clicks reuse the same result and changed inputs under the same key are rejected.
+
+**Decision needed.** Which concurrency and cost limits apply to the pilot?
+
+This records planning requirements only. Connect your agent remains on the roadmap.
