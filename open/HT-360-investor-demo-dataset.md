@@ -10,3 +10,7 @@ Give the investor demo its own MySQL database, document storage and retrieval in
 5. Verify two resets, 1,000 distinct Brighton homes, 557 Free and 443 Pro, no duplicate associations, no working-data changes and no notifications or billing. Rehearse Admin → John and Maya → Control centre → Vault → Ask on the pinned frontend/backend revisions.
 
 Production deployment and changes to live customer records are outside scope. Any gap requiring new product schema must use a shared migration reviewed by the normal backend workflow.
+
+## Initial verification · 26 November 2026
+
+Ran the unchanged migration chain from backend main 370348fee795cf26ddc0b4fbace074cf3650a651 on a new, empty, disposable MySQL 8 container bound to loopback. All 15 migrations completed and the database contained 45 tables including SequelizeMeta. The container was stopped after verification. No existing database was used or reset. This establishes a clean build; structural parity with the working database, fixture loading, repeatable reset and integrated walkthrough remain open.
