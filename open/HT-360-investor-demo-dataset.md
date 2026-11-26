@@ -14,3 +14,11 @@ Production deployment and changes to live customer records are outside scope. An
 ## Initial verification · 26 November 2026
 
 Ran the unchanged migration chain from backend main 370348fee795cf26ddc0b4fbace074cf3650a651 on a new, empty, disposable MySQL 8 container bound to loopback. All 15 migrations completed and the database contained 45 tables including SequelizeMeta. The container was stopped after verification. No existing database was used or reset. This establishes a clean build; structural parity with the working database, fixture loading, repeatable reset and integrated walkthrough remain open.
+
+## Data verification on 26 November 2026
+
+[Backend draft PR 19](https://github.com/jasonlryan/HomeTruth-be/pull/19) contains the versioned fixture and dedicated local database setup. Two clean resets reproduced the same 45-table schema fingerprint and passed field-by-field reconciliation for all 1,000 Brighton homes, 557 Free and 443 Pro, 1,588 listed documents, 13 John ledger entries and four readable Maya files. A repeat seed on populated data refused to overwrite it.
+
+The working dev database also has 45 tables. A read-only DDL comparison found differences on 19 tables, including timestamp defaults, indexes, column comments and foreign key names. Fresh builds reproduce the migration-defined schema. Reconcile legacy drift through a separately reviewed shared migration before claiming identical structure across environments. The working database was not edited.
+
+Admin portfolio filtering and export, isolated vector retrieval, Maya’s cited journey and the rehearsal on 3014 remain open.
