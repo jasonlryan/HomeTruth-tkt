@@ -28,3 +28,11 @@ Admin portfolio filtering and export, isolated vector retrieval, Maya’s cited 
 [Backend PR 19](https://github.com/jasonlryan/HomeTruth-be/pull/19) merged to main at e814cf4. The loopback product API on 8360 runs from a main checkout with the isolated demo database, private media copies and a local knowledge snapshot. The snapshot reconciled 783 general and 442 URL records from the shared knowledge index into 174 readable documents, without copying private user-document namespaces. Admin browsing and text search work independently of the Styleguide server. No vector-search equivalence is claimed.
 
 Live authenticated checks cover source-faithful Brighton CSV/JSON and ledger CSV, all 1,000 source rows, exact tier totals, Maya exclusion, John's 13 entries and the knowledge list/detail responses. Anonymous and homeowner access checks passed. Nine backend tests and GitGuardian passed. The frontend main browser gate and Maya's provider-assisted missing manual rehearsal are tracked separately pending evidence.
+
+## Frontend consolidation, 27 November 2026
+
+[Frontend PR 22](https://github.com/jasonlryan/HomeTruth-fe/pull/22) merged without squashing from reviewed head 1bad44d into main at 38eea90. Both local frontend checkouts were fast-forwarded to that merge. Main on 3014 passed the authenticated Admin walkthrough with port 3001 blocked.
+
+The walkthrough covered the ontology, four explainers, nine sample cards (two original text previews and seven catalogue-only entries), the byte-identical survey Markdown, and text search and browsing over 174 knowledge documents. Browser downloads reconciled to 1,000 Brighton homes, 557 Free, 443 Pro, 1,588 document labels and 13 John ledger entries. The anchoring demonstration runs in the browser and sends no transaction. Frontend checks: 49 tests, optimized build and GitGuardian passed.
+
+Keep the ticket open for the remaining rehearsal evidence. The Utility washing-machine search has not delivered a verified manual.
