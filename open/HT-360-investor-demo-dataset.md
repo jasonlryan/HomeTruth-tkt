@@ -36,3 +36,5 @@ Live authenticated checks cover source-faithful Brighton CSV/JSON and ledger CSV
 The walkthrough covered the ontology, four explainers, nine sample cards (two original text previews and seven catalogue-only entries), the byte-identical survey Markdown, and text search and browsing over 174 knowledge documents. Browser downloads reconciled to 1,000 Brighton homes, 557 Free, 443 Pro, 1,588 document labels and 13 John ledger entries. The anchoring demonstration runs in the browser and sends no transaction. Frontend checks: 49 tests, optimized build and GitGuardian passed.
 
 Keep the ticket open for the remaining rehearsal evidence. The Utility washing-machine search has not delivered a verified manual.
+
+On 3014, frontend main 38eea90 and API main 23f9280 passed the Admin walkthrough again after restart. Maya signed in with the local shortcut, selected the Kitchen Bosch WAN28281GB, typed her manual request in Ask HomeTruth, and opened the existing Vault document 4 with zero provider searches. The Utility live-search success case remains open.
